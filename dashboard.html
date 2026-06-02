@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--Usado para o gráfico de colunas-->
+</head>
+
+<body>
+    <header class="header">
+        <div class="bradesco-logo">
+            <img src="assets/logo_bradesco.png" alt="Bradesco">
+        </div>
+        <div class="header-usuario">
+            <span>Olá, <strong>Matheus Carvalho</strong></span>
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+        </div>
+    </header>
+
+    <!--Container principal-->
+    <div class="container">
+
+        <!--Sidebar-->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+                    <li class="ativo"><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+                    <li><a href="pix.html"><i class="fa-brands fa-pix"></i> PIX</a></li>
+                    <li><a href="#"><i class="fa-solid fa-right-left"></i> Transferir</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-lines"></i> Extrato</a></li>
+                    <li><a href="#"><i class="fa-solid fa-credit-card"></i> Cartões</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+
+            <!-- Saudação -->
+            <div class="saudacao">
+                <h1>Dashboard <i class="fa-solid fa-chart-line"></i></h1>
+                <p id="data-hoje"></p>
+            </div>
+            <br>
+            
+            <!-- Cards de resumo -->
+            <div class="dashboard-resumo">
+                <div class="card-resumo">
+                    <div class="card-resumo-icone"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    <div>
+                        <span class="card-resumo-label">Receitas do mês</span>
+                        <p class="card-resumo-valor positivo">+ R$ 5.000,00</p>
+                    </div>
+                </div>
+                <div class="card-resumo">
+                    <div class="card-resumo-icone"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    <div>
+                        <span class="card-resumo-label">Gastos do mês</span>
+                        <p class="card-resumo-valor positivo">- R$ 1.890,50</p>
+                    </div>
+                </div>
+                <div class="card-resumo">
+                    <div class="card-resumo-icone"><i class="fa-solid fa-wallet"></i></div>
+                    <div>
+                        <span class="card-resumo-label">Saldo atual</span>
+                        <p class="card-resumo-valor">R$ 4.250,00</p>
+                    </div>
+                </div>
+                <div class="card-resumo">
+                    <div class="card-resumo-icone"><i class="fa-solid fa-credit-card"></i></div>
+                    <div>
+                        <span class="card-resumo-label">Fatura do cartão</span>
+                        <p class="card-resumo-valor negativo">R$ 743,20</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico + lateral-->
+            <div class="dashboard-linha">
+
+                <!-- Gráfico -->
+                <div class="card dashboard-grafico">
+                    <div class="card-cabecalho">
+                        <h2>Receitas X Despesas</h2>
+                        <span style="font-size: 13px; color: var(--texto-claro);"></span>
+                    </div>
+                    <canvas id="graficoMensal"></canvas>
+                </div>
+
+                <!-- Lateral -->
+                <div class="dashboard-lateral">
+                    <!--Card para cartão-->
+                    <div class="card-cartao">
+                        <div class="cartao-topo">
+                            <span class="cartao-bandeira">VISA</span>
+                            <i class="fa-solid fa-wifi" style="transform: rotate(90deg);"></i>
+                        </div>
+                        <div class="cartao-numero">•••• •••• •••• 4892</div>
+                        <div class="cartao-rodape">
+                            <div>
+                                <span class="cartao-label">Titular</span>
+                                <span class="cartao-dado">Matheus Carvalho</span>
+                            </div>
+                            <div>
+                                <span class="cartao-label">Validade</span>
+                                <span class="cartao-dado">08/28</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gastos por categoria -->
+                    <div class="card">
+                        <div class="card-cabecalho">
+                            <h2>Por categoria</h2>
+                        </div>
+                        <ul class="categorias">
+                            <li class="categoria">
+                                <div class="categoria-info">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span>Alimentação</span>
+                                </div>
+                                <div class="categoria-barra-container">
+                                    <div class="categoria-barra" style="width: 75%"></div>
+                                </div>
+                                <span class="categoria-valor">R$ 620</span>
+                            </li>
+                            <li class="categoria">
+                                <div class="categoria-info">
+                                    <i class="fa-solid fa-tv"></i>
+                                    <span>Assinaturas</span>
+                                </div>
+                                <div class="categoria-barra-container">
+                                    <div class="categoria-barra" style="width: 20%"></div>
+                                </div>
+                                <span class="categoria-valor">R$ 165</span>
+                            </li>
+                            <li class="categoria">
+                                <div class="categoria-info">
+                                    <i class="fa-solid fa-car"></i>
+                                    <span>Transporte</span>
+                                </div>
+                                <div class="categoria-barra-container">
+                                    <div class="categoria-barra" style="width: 40%"></div>
+                                </div>
+                                <span class="categoria-valor">R$ 320</span>
+                            </li>
+                            <li class="categoria">
+                                <div class="categoria-info">
+                                    <i class="fa-solid fa-house"></i>
+                                    <span>Moradia</span>
+                                </div>
+                                <div class="categoria-barra-container">
+                                    <div class="categoria-barra" style="width: 90%"></div>
+                                </div>
+                                <span class="categoria-valor">R$ 850</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Últimas transações -->
+            <div class="card" style="margin-top: 24px;">
+                <div class="card-cabecalho">
+                    <h2>Últimas Transações</h2>
+                    <a href="#">Ver todas</a>
+                </div>
+                <br>
+                <ul class="transacoes">
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">Supermercados Extra</span>
+                            <span class="transacao-data">Hoje, 14h30</span>
+                        </div>
+                        <span class="transacao-valor negativo">- R$ 89,90</span>
+                    </li>
+                    <br>
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">Salário</span>
+                            <span class="transacao-data">01 Mai, 08h00</span>
+                        </div>
+                        <span class="transacao-valor positivo">+ R$ 5.000,00</span>
+                    </li>
+                    <br>
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">Netflix</span>
+                            <span class="transacao-data">28 Abr, 09h30</span>
+                        </div>
+                        <span class="transacao-valor negativo">- R$ 55,99</span>
+                    </li>
+                    <br>
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">Spotify</span>
+                            <span class="transacao-data">25 Abr, 10h00</span>
+                        </div>
+                        <span class="transacao-valor negativo">- R$ 21,90</span>
+                    </li>
+                    <br>
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">PIX recebido - João</span>
+                            <span class="transacao-data">20 Abr, 15h45</span>
+                        </div>
+                        <span class="transacao-valor positivo">+ R$ 150,00</span>
+                    </li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+
+    </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco | Minha conta</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Biblioteca para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!--Cabeçalho-->
+    <header class="header">
+        <div class="bradesco-logo">
+            <img src="assets/logo_bradesco.png" alt="Bradesco">
+        </div>
+        <div class="header-usuario">
+            <span>Olá, <strong>Matheus Carvalho</strong></span>
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+        </div>
+    </header>
+
+    <!--Conteiner Principal-->
+    <div class="container">
+
+        <!--Sidebar-->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li class="ativo"><a href="index.html"><i class="fa-solid fa-house"></i>  Início</a></li>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i>  Dashboard</a></li>
+                    <li><a href="pix.html"><i class="fa-brands fa-pix"> </i>  PIX</a></li>
+                    <li><a href="#"><i class="fa-solid fa-right-left"> </i>  Transferir</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-lines"> </i>  Extrato</a></li>
+                    <li><a href="#"><i class="fa-solid fa-credit-card"> </i>  Cartões</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!--Conteúdo Principal-->
+        <main class="main-content">
+
+            <!--Saudação-->
+            <div class="saudacao">
+                <h1>Bem-vindo, Matheus! 👋</h1>
+                <p id="data-hoje"></p>
+            </div>
+
+            <br>
+            <!--Card de saldo-->
+            <div class="card-saldo">
+                <div class="card-saldo-topo">
+                    <span>Saldo disponível</span>
+                    <button id="btn-ocultar" onclick="toggleSaldo()"><i class="fa-solid fa-eye"></i> Ocultar</button>
+                </div>
+                <div class="card-saldo-valor" id="saldo-valor">
+                    R$ 4.250,00
+                </div>
+            </div>
+
+            <!--Atalhos-->
+            <div class="atalhos">
+                <a href="pix.html" class="atalho">
+                    <div class="atalho-icone"><i class="fa-brands fa-pix"></i></div>
+                    <span>PIX</span>
+                </a>
+                <a href="#" class="atalho">
+                    <div class="atalho-icone"><i class="fa-solid fa-right-left"></i></div>
+                    <span>Transferir</span>
+                </a>
+                <a href="#" class="atalho">
+                    <div class="atalho-icone"><i class="fa-solid fa-barcode"></i></div>
+                    <span>Pagar</span>
+                </a>
+                <a href="#" class="atalho">
+                    <div class="atalho-icone"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <span>Extrato</span>
+                </a>
+                <a href="#" class="atalho">
+                    <div class="atalho-icone"><i class="fa-solid fa-bus"></i></div>
+                    <span>Bilhete único</span>
+                </a>
+                <a href="#" class="atalho">
+                    <div class="atalho-icone"><i class="fa-solid fa-chart-pie"></i></div>
+                    <span>Investimentos</span>
+                </a>
+                <a href="#" class="atalho">
+                    <div class="atalho-icone"><i class="fa-solid fa-bitcoin-sign"></i></div>
+                    <span>Criptomoedas</span>
+                </a>
+                <a href="#" class="atalho">
+                    <div class="atalho-icone"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <span>Recarga celular</span>
+                </a>
+            </div>
+
+            <!--Últimas transações-->
+            <div class="card">
+                <div class="card-cabecalho">
+                    <h2>Últimas transações</h2>
+                    <a href="#">Ver todas →</a>
+                </div>
+                <br>
+                <ul class="transacoes">
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">Supermercado Extra</span>
+                            <span class="transacao-data">Hoje, 14h30</span>
+                        </div>
+                        <span class="transacao-valor negativo">- R$ 89,90</span>
+                    </li>
+                    <br>
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">Salário</span>
+                            <span class="transacao-data">01 Mai, 08h00</span>
+                        </div>
+                        <span class="transacao-valor positivo">R$ 5.000,00</span>
+                    </li>
+                    <br>
+                    <li class="transacao">
+                        <div class="transacao-info">
+                            <span class="transacao-nome">Netflix</span>
+                            <span class="transacao-data">28 Abr, 09h30</span>
+                        </div>
+                        <span class="transacao-valor negativo">- R$ 55,99</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Card de acesso rápido ao dashboard-->
+            <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2>Visão completa da sua conta</h2>
+                    <p style="color: var(--text0-claro); font-size: 13px; margin-top: 4px;">
+                        Ver dashboard <i class="fa-solid fa-arrow-right"></i>
+                    </p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,426 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Faz o tamanho dos elementos se comportar de forma previsível */
+}
+
+/* Variáveis */
+:root {
+  --vermelho: #CC0000;
+  --vermelho-escuro: #990000;
+  --fundo: #F5F5F5;
+  --branco: #FFFFFF;
+  --texto: #333333;
+  --texto-claro: #777777;
+  --sidebar-largura: 220px;
+  --header-altura: 65px;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--fundo);
+  color: var(--texto);
+}
+
+.header {
+    position: fixed; /* Fica no topo mesmo ao rolar a página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-altura);
+    background-color: #e9e9e9;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Joga logo pra esquerda e usuário pra direita */
+    padding: 0 24px;
+    z-index: 100; /* Garante que o header fica na frente de tudo */
+}
+
+.header-usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--texto);
+}
+
+.header-usuario i {
+    color: var(--vermelho);
+}
+
+.bradesco-logo img {
+    height: 50px;
+    object-fit: contain; /* garante que a logo não distorce */
+    display: block; /* Remove um espaço invisível que o HTML coloca embaixo das imagens por padrão */
+}
+
+.container {
+    display: flex;
+    margin-top: var(--header-altura);
+    min-height: calc(100vh - var(--header-altura)); /* Calcula altura dinâmica: tela inteira menos o header */
+}
+
+/* Configurações do menu lateral */
+.sidebar {
+    position: fixed; /* Sidebar fica fixa ao rolar a página, igual ao header */
+    top: var(--header-altura);
+    left: 0;
+    width: var(--sidebar-largura);
+    height: calc(100vh - var(--header-altura));
+    border-right: 1px solid #E0E0E0;
+    padding-top: 24px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 14px 24px;
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2;
+}
+
+.sidebar ul li a:hover {
+    background-color: #F5F5F5;
+    color: var(--vermelho);
+}
+
+.sidebar ul li.ativo a {
+    color: var(--vermelho);
+    font-weight: bold;
+    border-left: 3px solid var(--vermelho); /* A barrinha vermelha no item ativo da sidebar */
+}
+/* Fim das configurações do menu lateral */
+
+.main-content {
+    margin-left: var(--sidebar-largura);
+    padding: 32px;
+    flex: 1; /* O conteúdo ocupa todo o espaço restante */
+}
+
+/* Saudação */
+.saudacao {
+    margin-top: 24px;
+}
+
+.saudacao h1 {
+    font-size: 35px;
+    color: var(--texto);
+}
+
+.saudacao p {
+    color: var(--texto-claro);
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+/* Card de saldo */
+.card-saldo {
+    background-color: #1e1e1e;
+    color: var(--branco);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.card-saldo-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.card-saldo-topo button {
+    background: none;
+    border: none;
+    color: var(--branco);
+    cursor: pointer;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.card-saldo-topo button:hover {
+    opacity: 1;
+}
+
+.card-saldo-valor {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Atalhos */
+.atalhos {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.atalho {
+    flex: 1;
+    background-color: var(--branco);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--texto);
+    transition: transform 0.9s, box-shadow 0.9;
+    border: 1px solid #e0e0e0;
+}
+
+.atalho:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rbga(0,0,0,0.08);
+}
+
+.atalho-icone {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.atalho span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Card genérico */
+.card {
+    background-color: var(--branco);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 24px;
+}
+
+.card-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.card-cabecalho h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card-cabecalho a {
+    font-size: 13px;
+    color: var(--vermelho);
+    text-decoration: none;
+}
+
+/* Transações */
+.transacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.transacao:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.transacao-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.transacao-nome {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.transacao-data {
+    font-size: 12px;
+    color: var(--texto-claro);
+}
+
+.transacao.valor {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.positivo { color: #1A7A3C; }
+.negativo { color: #CC0000; }
+
+.btn-vermelho {
+    background-color: var(--vermelho);
+    color: var(--branco);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-vermelho:hover {
+    background-color: var(--vermelho-escuro);
+}
+
+/* Dashboard */
+.dashboard-linha {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.dashboard-grafico {
+    flex: 2;
+}
+
+.dashboard-lateral {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card-cartao {
+    background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+    border-radius: 16px;
+    padding: 24px;
+    color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cartao-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartao-bandeira {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--branco);
+}
+
+.cartao-numero {
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+.cartao-rodape {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartao-label {
+    display: block;
+    font-size: 10px;
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.cartao-dado {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.dashboard-resumo {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.card {
+    font-weight: bold;
+}
+
+.card-resumo {
+    flex: 1;
+    background-color: var(--branco);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.card-resumo-icone {
+    font-size: 24px;
+    color: var(--vermelho);
+    background-color: #FFF0F0;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-resumo-label {
+    font-size: 12px;
+    color: var(--texto-claro);
+}
+
+.card-resumo-valor {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 4px;
+    color: var(--texto);
+}
+
+/* Por categoria */
+.categorias {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.categoria {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.categoria-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 110px;
+    font-size: 13px;
+}
+
+.categoria-info i {
+    color: var(--vermelho);
+    width: 16px;
+}
+
+.categoria-barra-container {
+    flex: 1;
+    background-color: #F0F0F0;
+    border-radius: 99px;
+    height: 8px;
+}
+
+.categoria-barra {
+    height: 8px;
+    background-color: var(--vermelho);
+    border-radius: 99px;
+}
+
+.categoria-valor {
+    font-size: 13px;
+    font-weight: 600;
+    width: 60px;
+    text-align: right;
+}
