@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco | Extrato</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="bradesco-logo">
+            <img src="/assets/logo_bradesco.png" alt="Bradesco">
+        </div>
+        <div class="header-usuario">
+            <span>Olá, <strong>Matheus Carvalho</strong></span>
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+        </div>
+    </header>
+
+    <!--Container principal-->
+    <div class="main-content">
+
+        <!--Sidebar-->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+                    <li><a href="pix.html"><i class="fa-brands fa-pix"></i> PIX</a></li>
+                    <li><a href="#"><i class="fa-solid fa-right-left"></i> Transferir</a></li>
+                    <li class="ativo"><a href="extract.html"><i class="fa-solid fa-file-lines"></i> Extrato</a></li>
+                    <li><a href="#"><i class="fa-solid fa-credit-card"></i> Cartões</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+    <div class="container">
+        <main>
+            <div>
+                <h1>Extrato <i class="fa-solid fa-file-lines"></i></h1>
+                <p id="data-hoje"></p>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <div class="extrato-filtros">
+                    <div class="filtro-grupo">
+                        <label for="dataInicio">De:</label>
+                        <input type="date" id="dataInicio" value="2026-05-02">
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <label for="dataFim">Até:</label>
+                        <input type="date" id="dataFim" value="2026-06-02">
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <label for="tipoTransacao">Tipo:</label>
+                        <select id="tipoTransacao">
+                            <option value="">Todas as transações</option>
+                            <option value="receita">Apenas receitas</option>
+                            <option value="despesa">Apenas despesas</option>
+                        </select>
+                    </div>
+
+                    <div class="extrato-acoes">
+                        <button class="btn-acao" onclick="filtrarExtrato()">
+                            <i class="fa-solid fa-filter"></i> Filtrar
+                        </button>
+
+                        <button class="btn-acao" onclick="exportarCSV()">
+                            <i class="fa-solid fa-download"></i> Exportar
+                        </button>
+
+                        <button class="btn-acao" onclick="imprimirExtrato()">
+                            <i class="fa-solid fa-print"></i> Imprimir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="extrato-resumo">
+                <div class="resumo-card">
+                    <div class="resumo-label">Total de receitas</div>
+                    <div class="resumo-valor positivo">R$ 5.000,00</div>
+                </div>
+
+                <div class="resumo-card">
+                    <div class="resumo-label">Total de despesas</div>
+                    <div class="resumo-valor negativo">- R$ 1.890,50</div>
+                </div>
+
+                <div class="resumo-card">
+                    <div class="resumo-label">Saldo do período</div>
+                    <div class="resumo-valor">R$ 4.250,00</div>
+                </div>
+
+                <div class="resumo-card">
+                    <div class="resumo-label">Total de transações</div>
+                    <div class="resumo-valor">5</div>
+                </div>
+            </div>
+
+            <div class="extrato-lista">
+                <table class="extrato-tabela">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Valor</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>18/05/2026</td>
+                            <td>09h20</td>
+                            <td>
+                                <div class="transacao-descricao">Supermercado Extra</div>
+                            </td>
+                            <td>
+                                <div class="transacao-categoria">Mercado</div>
+                            </td>
+                            <td class="extrato-valor negativo">- R$ 89,90</td>
+                            <td class="extrato-valor">R$ 4.982,21</td>
+                        </tr>
+
+                        <tr>
+                            <td>15/05/2026</td>
+                            <td>14h00</td>
+                            <td>
+                                <div class="transacao-descricao">Empresa ABC</div>
+                            </td>
+                            <td>
+                                <div class="transacao-categoria">Transferência recebida</div>
+                            </td>
+                            <td class="extrato-valor positivo">R$ 5.000,00</td>
+                            <td class="extrato-valor">R$ 5.072,11</td>
+                        </tr>
+
+                        <tr>
+                            <td>10/05/2026</td>
+                            <td>11h30</td>
+                            <td>
+                                <div class="transacao-descricao">Netflix</div>
+                            </td>
+                            <td>
+                                <div class="transacao-categoria">Assinatura</div>
+                            </td>
+                            <td class="extrato-valor negativo">- R$ 55,99</td>
+                            <td class="extrato-valor">R$ 72,11</td>
+                        </tr>
+
+                        <tr>
+                            <td>25/04/2026</td>
+                            <td>10h00</td>
+                            <td>
+                                <div class="transacao-descricao">Spotify</div>
+                            </td>
+                            <td>
+                                <div class="transacao-categoria">Assinatura</div>
+                            </td>
+                            <td class="extrato-valor negativo">- R$ 21,90</td>
+                            <td class="extrato-valor">R$ 128,10</td>
+                        </tr>
+
+                        <tr>
+                            <td>20/04/2026</td>
+                            <td>15h45</td>
+                            <td>
+                                <div class="transacao-descricao">Pix Recebido - João Silva</div>
+                            </td>
+                            <td>
+                                <div class="transacao-categoria">Recebido</div>
+                            </td>
+                            <td class="extrato-valor positivo">R$ 150,00</td>
+                            <td class="extrato-valor">R$ 150,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="extrato-info">
+                    Mostrando 1 a 5 de 5 transações
+                </div>
+            </div>
+
+            <div class="paginacao">
+                <button disabled>&larr; Anterior</button>
+                <button class="ativo">1</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function filtrarExtrato() {
+            const dataInicio = document.getElementById('dataInicio').value;
+            const dataFim = document.getElementById('dataFim').value;
+            const tipo = document.getElementById('tipoTransacao').value;
+
+            if (!dataInicio || !dataFim) {
+                alert('Selecione o período desejado');
+                return;
+            }
+
+            alert(`Filtrando extrato de ${dataInicio} até ${dataFim}${tipo ? ` - Tipo: ${tipo}` : ''}`);
+        }
+
+        function exportarCSV() {
+            alert('Extrato exportado em CSV');
+        }
+
+        function imprimirExtrato() {
+            window.print();
+        }
+    </script>
+
+</body>
+
+</html>
