@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco | Recarga de Celular</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="bradesco-logo">
+            <img src="/assets/logo_bradesco.png" alt="Bradesco">
+        </div>
+
+        <div class="header-usuario">
+            <span>Olá, <strong>Matheus Carvalho</strong></span>
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa-solid fa-house"></i> Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fa-solid fa-chart-line"></i> Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="pix.html">
+                            <i class="fa-brands fa-pix"></i> PIX
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="transferir.html">
+                            <i class="fa-solid fa-right-left"></i> Transferir
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="extract.html">
+                            <i class="fa-solid fa-file-lines"></i> Extrato
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-credit-card"></i> Cartões
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <div class="saudacao">
+                <h1>Recarga de Celular <i class="fa-solid fa-mobile-screen"></i></h1>
+                <p>Recarregue seu celular com poucos cliques</p>
+            </div>
+
+            <div class="card-saldo">
+                <div class="card-saldo-topo">
+                    <span>Saldo disponível</span>
+                </div>
+                <div class="card-saldo-valor" id="saldo-valor-recharge">
+                    R$ 0,00
+                </div>
+            </div>
+
+            <div class="recharge-container">
+
+                <div class="recharge-form card">
+
+                    <div class="info-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Recargas de até R$ 500,00 são processadas instantaneamente
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label" for="numero-celular">Número do celular *</label>
+                        <input
+                            type="tel"
+                            class="form-input"
+                            id="numero-celular"
+                            placeholder="(XX)XXXXX-XXXX"
+                            maxlength="15"
+                            oninput="validarFormatoTelefone()"
+                        >
+                        <div class="form-erro" id="erro-telefone">
+                            Formato inválido. Use (DDD) 90000-0000
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label">Operadora *</label>
+
+                        <div class="operadoras">
+                            <button type="button" class="operadora-btn" data-operadora="vivo" onclick="selecionarOperadora(this)">
+                                <i class="fa-solid fa-phone"></i><br>Vivo
+                            </button>
+
+                            <button type="button" class="operadora-btn" data-operadora="claro" onclick="selecionarOperadora(this)">
+                                <i class="fa-solid fa-phone"></i><br>Claro
+                            </button>
+
+                            <button type="button" class="operadora-btn" data-operadora="tim" onclick="selecionarOperadora(this)">
+                                <i class="fa-solid fa-phone"></i><br>TIM
+                            </button>
+
+                            <button type="button" class="operadora-btn" data-operadora="oi" onclick="selecionarOperadora(this)">
+                                <i class="fa-solid fa-phone"></i><br>Oi
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label">Valor da recarga *</label>
+
+                        <div class="valores-rapidos">
+                            <button type="button" class="valor-btn" onclick="selecionarValor(this, 10)">R$ 10</button>
+                            <button type="button" class="valor-btn" onclick="selecionarValor(this, 20)">R$ 20</button>
+                            <button type="button" class="valor-btn" onclick="selecionarValor(this, 30)">R$ 30</button>
+                            <button type="button" class="valor-btn" onclick="selecionarValor(this, 50)">R$ 50</button>
+                            <button type="button" class="valor-btn" onclick="selecionarValor(this, 100)">R$ 100</button>
+                            <button type="button" class="valor-btn" onclick="selecionarValor(this, 200)">R$ 200</button>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label" for="valor-customizado">Outro valor</label>
+                        <input
+                            type="number"
+                            class="form-input"
+                            id="valor-customizado"
+                            placeholder="Digite um valor acima de R$ 200"
+                            min="200"
+                            step="1"
+                            oninput="limparSelecaoRapida()"
+                            onfocus="aoFocarValorCustomizado()"
+                            onblur="aoSairValorCustomizado()"
+                        >
+                    </div>
+
+                    <div class="btns-acao">
+                        <button class="btn btn-secundario" onclick="limparFormulario()">
+                            <i class="fa-solid fa-rotate-left"></i> Limpar
+                        </button>
+
+                        <button class="btn btn-primario" id="btn-confirmar" onclick="confirmarRecarga()" disabled>
+                            <i class="fa-solid fa-check"></i> Confirmar recarga
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="recharge-sidebar">
+
+                    <div class="resumo-card" id="resumo-container" style="display: none;">
+                        <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--texto);">
+                            Resumo da recarga
+                        </h3>
+
+                        <div class="resumo-item">
+                            <span class="resumo-label">Número:</span>
+                            <span id="resumo-numero">-</span>
+                        </div>
+
+                        <div class="resumo-item">
+                            <span class="resumo-label">Operadora:</span>
+                            <span id="resumo-operadora">-</span>
+                        </div>
+
+                        <div class="resumo-item">
+                            <span class="resumo-label">Valor:</span>
+                            <span id="resumo-valor">-</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">
+                            Recargas recentes
+                        </h3>
+
+                        <ul class="transacoes">
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <div class="sucesso-modal" id="modal-sucesso">
+        <div class="sucesso-conteudo">
+            <div class="sucesso-icone">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div class="sucesso-titulo">Recarga realizada!</div>
+
+            <p class="sucesso-descricao">
+                Sua recarga foi processada com sucesso
+            </p>
+
+            <div class="sucesso-detalhes">
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Número:</span>
+                    <span class="detalhe-valor" id="modal-numero">-</span>
+                </div>
+
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Operadora:</span>
+                    <span class="detalhe-valor" id="modal-operadora">-</span>
+                </div>
+
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Valor:</span>
+                    <span class="detalhe-valor" id="modal-valor">-</span>
+                </div>
+
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Protocolo:</span>
+                    <span class="detalhe-valor" id="modal-protocolo">-</span>
+                </div>
+            </div>
+
+            <button class="btn btn-primario" onclick="fecharModal()">
+                Voltar ao início
+            </button>
+        </div>
+    </div>
+
+    <div class="processamento-modal" id="modal-processamento">
+        <div class="processamento-conteudo">
+            <div class="processamento-icone">
+                <i class="fa-solid fa-hourglass-end"></i>
+            </div>
+
+            <div class="processamento-titulo">Recarga em processamento</div>
+
+            <p class="processamento-descricao">
+                Sua recarga está sendo processada
+            </p>
+
+            <div class="processamento-info">
+                <i class="fa-solid fa-circle-info"></i>
+                Você receberá um aviso sobre o processamento da recarga via SMS em até
+                <strong>uma hora</strong>
+            </div>
+
+            <div class="processamento-celular">
+                <i class="fa-solid fa-mobile-screen"></i><br>
+                <span id="processamento-celular">-</span>
+            </div>
+
+            <button class="btn btn-primario" onclick="fecharModalProcessamento()">
+                Voltar ao início
+            </button>
+        </div>
+    </div>
+
+    <script src="../js/recharge.js"></script>
+
+</body>
+
+</html>
