@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco | Transferir</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="bradesco-logo">
+            <img src="assets/logo_bradesco.png" alt="Bradesco">
+        </div>
+        <div class="header-usuario">
+            <span>Olá, <strong>Matheus Carvalho</strong></span>
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="pix.html"><i class="fa-brands fa-pix"></i> PIX</a></li>
+                    <li class="ativo"><a href="transferir.html"><i class="fa-solid fa-right-left"></i> Transferir</a></li>
+                    <li><a href="extract.html"><i class="fa-solid fa-file-lines"></i> Extrato</a></li>
+                    <li><a href="#"><i class="fa-solid fa-credit-card"></i> Cartões</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <div class="saudacao">
+                <h1>Transferir <i class="fa-solid fa-right-left"></i></h1>
+                <p id="data-hoje"></p>
+            </div>
+            <br>
+            <!-- Card de saldo -->
+            <div class="card-saldo" style="margin-bottom: 24px;">
+                <div class="card-saldo-topo">
+                    <span>💰 Saldo disponível</span>
+                </div>
+                <div class="card-saldo-valor">R$ 4.250,00</div>
+            </div>
+
+            <!-- Indicador de etapas -->
+            <div class="etapas-indicador">
+                <div class="etapa-item ativa" id="ind-etapa-1">
+                    <div class="etapa-numero">1</div>
+                    <span>Tipo</span>
+                </div>
+                <div class="etapa-linha"></div>
+                <div class="etapa-item" id="ind-etapa-2">
+                    <div class="etapa-numero">2</div>
+                    <span>Favorecido</span>
+                </div>
+                <div class="etapa-linha"></div>
+                <div class="etapa-item" id="ind-etapa-3">
+                    <div class="etapa-numero">3</div>
+                    <span>Valor</span>
+                </div>
+                <div class="etapa-linha"></div>
+                <div class="etapa-item" id="ind-etapa-4">
+                    <div class="etapa-numero">4</div>
+                    <span>Confirmar</span>
+                </div>
+            </div>
+
+            <!-- ETAPA 1 — Tipo de transferência -->
+            <div class="card etapa-conteudo" id="etapa-1">
+                <h2 style="margin-bottom: 8px;">Qual tipo de transferência?</h2>
+                <p style="color: var(--texto-claro); font-size: 14px; margin-bottom: 24px;">Selecione uma opção para continuar</p>
+
+                <div class="tipo-grid">
+                    <button class="tipo-btn" onclick="selecionarTipo(this, 'TED')">
+                        <i class="fa-solid fa-bolt"></i>
+                        <strong>TED</strong>
+                        <span>Transferência instantânea para qualquer banco</span>
+                    </button>
+                    <button class="tipo-btn" onclick="selecionarTipo(this, 'DOC')">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <strong>DOC</strong>
+                        <span>Processado no próximo dia útil</span>
+                    </button>
+                    <button class="tipo-btn" onclick="selecionarTipo(this, 'Entre contas Bradesco')">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <strong>Entre contas Bradesco</strong>
+                        <span>Transferência imediata entre contas do banco</span>
+                    </button>
+                    <button class="tipo-btn" onclick="selecionarTipo(this, 'Agendada')">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <strong>Agendada</strong>
+                        <span>Agende para uma data futura</span>
+                    </button>
+                </div>
+
+                <div class="etapa-acoes">
+                    <span></span>
+                    <button class="btn btn-primario" id="btn-prox-1" onclick="irParaEtapa(2)" disabled>
+                        Próximo <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ETAPA 2 — Dados do favorecido -->
+            <div class="card etapa-conteudo" id="etapa-2" style="display:none;">
+                <h2 style="margin-bottom: 8px;">Dados do favorecido</h2>
+                <p style="color: var(--texto-claro); font-size: 14px; margin-bottom: 24px;">Preencha os dados de quem vai receber</p>
+
+                <div class="form-grupo">
+                    <label class="form-label" for="nome-favorecido">Nome completo *</label>
+                    <input type="text" class="form-input" id="nome-favorecido"
+                        placeholder="Nome do favorecido"
+                        oninput="verificarEtapa2()">
+                </div>
+
+                <div class="form-grupo">
+                    <label class="form-label" for="banco">Banco *</label>
+                    <select class="form-input" id="banco" onchange="verificarEtapa2()">
+                        <option value="">Selecione o banco</option>
+                        <option value="Bradesco">Bradesco</option>
+                        <option value="Itaú">Itaú</option>
+                        <option value="Nubank">Nubank</option>
+                        <option value="Banco do Brasil">Banco do Brasil</option>
+                        <option value="Caixa Econômica">Caixa Econômica</option>
+                        <option value="Santander">Santander</option>
+                        <option value="Inter">Inter</option>
+                        <option value="C6 Bank">C6 Bank</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 16px;">
+                    <div class="form-grupo" style="flex: 1;">
+                        <label class="form-label" for="agencia">Agência *</label>
+                        <input type="text" class="form-input" id="agencia"
+                            placeholder="0000" maxlength="4"
+                            oninput="this.value=this.value.replace(/\D/g,''); verificarEtapa2()">
+                    </div>
+                    <div class="form-grupo" style="flex: 2;">
+                        <label class="form-label" for="conta">Conta *</label>
+                        <input type="text" class="form-input" id="conta"
+                            placeholder="00000-0" maxlength="8"
+                            oninput="formatarConta(this); verificarEtapa2()">
+                    </div>
+                </div>
+
+                <div class="etapa-acoes">
+                    <button class="btn btn-secundario" onclick="irParaEtapa(1)">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn btn-primario" id="btn-prox-2" onclick="irParaEtapa(3)" disabled>
+                        Próximo <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ETAPA 3 — Valor e descrição -->
+            <div class="card etapa-conteudo" id="etapa-3" style="display:none;">
+                <h2 style="margin-bottom: 8px;">Qual o valor?</h2>
+                <p style="color: var(--texto-claro); font-size: 14px; margin-bottom: 24px;">Digite o valor e uma descrição opcional</p>
+
+                <div class="form-grupo">
+                    <label class="form-label" for="valor-transferencia">Valor *</label>
+                    <input type="text" class="form-input" id="valor-transferencia"
+                        placeholder="R$ 0,00"
+                        style="font-size: 24px; font-weight: 700; text-align: center;"
+                        oninput="formatarValorTransferencia(this); verificarEtapa3()">
+                </div>
+
+                <div class="form-grupo" id="grupo-data" style="display:none;">
+                    <label class="form-label" for="data-agendamento">Data do agendamento *</label>
+                    <input type="date" class="form-input" id="data-agendamento"
+                        oninput="verificarEtapa3()">
+                </div>
+
+                <div class="form-grupo">
+                    <label class="form-label" for="descricao">Descrição (opcional)</label>
+                    <input type="text" class="form-input" id="descricao"
+                        placeholder="Ex: Aluguel, empréstimo..." maxlength="50">
+                </div>
+
+                <div class="etapa-acoes">
+                    <button class="btn btn-secundario" onclick="irParaEtapa(2)">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn btn-primario" id="btn-prox-3" onclick="irParaEtapa(4)" disabled>
+                        Próximo <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ETAPA 4 — Confirmação -->
+            <div class="card etapa-conteudo" id="etapa-4" style="display:none;">
+                <h2 style="margin-bottom: 8px;">Confirme a transferência</h2>
+                <p style="color: var(--texto-claro); font-size: 14px; margin-bottom: 24px;">Verifique os dados antes de confirmar</p>
+
+                <div class="confirmacao-resumo">
+                    <div class="confirmacao-linha">
+                        <span class="confirmacao-label">Tipo</span>
+                        <span class="confirmacao-valor" id="conf-tipo">-</span>
+                    </div>
+                    <div class="confirmacao-linha">
+                        <span class="confirmacao-label">Para</span>
+                        <span class="confirmacao-valor" id="conf-favorecido">-</span>
+                    </div>
+                    <div class="confirmacao-linha">
+                        <span class="confirmacao-label">Banco</span>
+                        <span class="confirmacao-valor" id="conf-banco">-</span>
+                    </div>
+                    <div class="confirmacao-linha">
+                        <span class="confirmacao-label">Agência / Conta</span>
+                        <span class="confirmacao-valor" id="conf-agencia-conta">-</span>
+                    </div>
+                    <div class="confirmacao-linha destaque">
+                        <span class="confirmacao-label">Valor</span>
+                        <span class="confirmacao-valor negativo" id="conf-valor">-</span>
+                    </div>
+                    <div class="confirmacao-linha" id="conf-linha-data" style="display:none;">
+                        <span class="confirmacao-label">Data agendada</span>
+                        <span class="confirmacao-valor" id="conf-data">-</span>
+                    </div>
+                    <div class="confirmacao-linha" id="conf-linha-descricao" style="display:none;">
+                        <span class="confirmacao-label">Descrição</span>
+                        <span class="confirmacao-valor" id="conf-descricao">-</span>
+                    </div>
+                </div>
+
+                <div class="etapa-acoes">
+                    <button class="btn btn-secundario" onclick="irParaEtapa(3)">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn btn-primario" onclick="confirmarTransferencia()">
+                        <i class="fa-solid fa-check"></i> Confirmar transferência
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal sucesso -->
+    <div class="sucesso-modal" id="modal-sucesso-transferencia">
+        <div class="sucesso-conteudo">
+            <div class="sucesso-icone">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="sucesso-titulo">Transferência realizada!</div>
+            <p class="sucesso-descricao">Sua transferência foi processada com sucesso</p>
+            <div class="sucesso-detalhes">
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Para:</span>
+                    <span class="detalhe-valor" id="modal-favorecido">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Banco:</span>
+                    <span class="detalhe-valor" id="modal-banco">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Valor:</span>
+                    <span class="detalhe-valor" id="modal-valor-transferencia">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Protocolo:</span>
+                    <span class="detalhe-valor" id="modal-protocolo-transferencia">-</span>
+                </div>
+            </div>
+            <button class="btn btn-primario" onclick="fecharModalTransferencia()">
+                Voltar ao início
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

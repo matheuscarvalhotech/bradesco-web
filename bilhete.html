@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco | Bilhete Único</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="bradesco-logo">
+            <img src="assets/logo_bradesco.png" alt="Bradesco">
+        </div>
+        <div class="header-usuario">
+            <span>Olá, <strong>Matheus Carvalho</strong></span>
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="pix.html"><i class="fa-brands fa-pix"></i> PIX</a></li>
+                    <li><a href="transferir.html"><i class="fa-solid fa-right-left"></i> Transferir</a></li>
+                    <li><a href="extract.html"><i class="fa-solid fa-file-lines"></i> Extrato</a></li>
+                    <li><a href="#"><i class="fa-solid fa-credit-card"></i> Cartões</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <div class="saudacao">
+                <h1>Bilhete Único <i class="fa-solid fa-bus"></i></h1>
+                <p id="data-hoje"></p>
+            </div>
+            <br>
+            <!-- Saldo -->
+            <div class="card-saldo" style="margin-bottom: 24px;">
+                <div class="card-saldo-topo">
+                    <span>💰 Saldo disponível</span>
+                </div>
+                <div class="card-saldo-valor">R$ 4.250,00</div>
+            </div>
+
+            <div class="info-box" style="margin-bottom: 24px;">
+                <i class="fa-solid fa-circle-info"></i>
+                Recargas processadas em até 1 hora após a confirmação · SPTrans São Paulo
+            </div>
+
+            <div class="recharge-container">
+
+                <!-- Formulário -->
+                <div class="recharge-form card">
+
+                    <!-- Número do cartão -->
+                    <div class="form-grupo">
+                        <label class="form-label">Cartão Bilhete Único *</label>
+
+                        <!-- Cartões salvos -->
+                        <div class="cartoes-salvos">
+                            <button class="cartao-salvo-btn"
+                                onclick="selecionarCartaoSalvo(this, '1234 5678 9012 4821')">
+                                <i class="fa-solid fa-id-card"></i>
+                                <div>
+                                    <strong>•••• •••• •••• 4821</strong>
+                                    <span>Bilhete principal</span>
+                                </div>
+                            </button>
+                            <button class="cartao-salvo-btn"
+                                onclick="selecionarCartaoSalvo(this, '9876 5432 1098 7654')">
+                                <i class="fa-solid fa-id-card"></i>
+                                <div>
+                                    <strong>•••• •••• •••• 7654</strong>
+                                    <span>Bilhete secundário</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Ou digitar manualmente -->
+                        <div class="novo-cartao-toggle">
+                            <button class="btn-link" onclick="toggleNovoCartao()">
+                                <i class="fa-solid fa-plus"></i> Usar outro cartão
+                            </button>
+                        </div>
+
+                        <div id="novo-cartao-container" style="display:none;">
+                            <input type="text" class="form-input" id="numero-bilhete" placeholder="0000 0000 0000 0000"
+                                maxlength="19"
+                                oninput="formatarBilhete(this); validarBilhete(); atualizarResumoBilhete(); verificarFormularioBilhete()">
+                            <span class="form-erro" id="erro-bilhete"></span>
+                        </div>
+                    </div>
+
+                    <!-- Tipo do bilhete -->
+                    <div class="form-grupo">
+                        <label class="form-label">Tipo do bilhete *</label>
+                        <div class="tipo-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
+                            <button class="tipo-btn operadora-btn" onclick="selecionarTipoBilhete(this, 'Comum')"
+                                data-tipo="Comum">
+                                <i class="fa-solid fa-bus"></i>
+                                <strong>Comum</strong>
+                                <span>Tarifa padrão</span>
+                            </button>
+                            <button class="tipo-btn operadora-btn" onclick="selecionarTipoBilhete(this, 'Estudante')"
+                                data-tipo="Estudante">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <strong>Estudante</strong>
+                                <span>Meia passagem</span>
+                            </button>
+                            <button class="tipo-btn operadora-btn" onclick="selecionarTipoBilhete(this, 'Mensal')"
+                                data-tipo="Mensal">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <strong>Mensal</strong>
+                                <span>Ilimitado no mês</span>
+                            </button>
+                            <button class="tipo-btn operadora-btn" onclick="selecionarTipoBilhete(this, 'TOP')"
+                                data-tipo="TOP">
+                                <i class="fa-solid fa-star"></i>
+                                <strong>TOP</strong>
+                                <span>Metrô e CPTM</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Valor de recarga -->
+                    <div class="form-grupo" id="grupo-valores-bilhete" style="display:none;">
+                        <label class="form-label">Valor da recarga *</label>
+                        <div class="valores-grid" id="valores-bilhete"></div>
+                    </div>
+
+                    <!-- Valor customizado -->
+                    <div class="form-grupo" id="grupo-custom-bilhete" style="display:none;">
+                        <label class="form-label" for="valor-custom-bilhete">Outro valor</label>
+                        <input type="text" class="form-input" id="valor-custom-bilhete" placeholder="R$ 0,00"
+                            onfocus="aoFocarCustomBilhete()" onblur="aoSairCustomBilhete()"
+                            oninput="formatarValorBilhete(this)">
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="btns-acao">
+                        <button class="btn btn-secundario" onclick="limparFormularioBilhete()">
+                            <i class="fa-solid fa-rotate-left"></i> Limpar
+                        </button>
+                        <button class="btn btn-primario" id="btn-confirmar-bilhete" onclick="confirmarBilhete()"
+                            disabled>
+                            <i class="fa-solid fa-check"></i> Confirmar recarga
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Lateral -->
+                <div class="recharge-sidebar">
+
+                    <!-- Resumo -->
+                    <div class="card" id="resumo-bilhete-container" style="display:none;">
+                        <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 16px;">Resumo da recarga</h3>
+                        <div class="resumo-item">
+                            <span class="resumo-label">Cartão:</span>
+                            <span id="resumo-bilhete-numero">-</span>
+                        </div>
+                        <div class="resumo-item">
+                            <span class="resumo-label">Tipo:</span>
+                            <span id="resumo-bilhete-tipo">-</span>
+                        </div>
+                        <div class="resumo-item">
+                            <span class="resumo-label">Valor:</span>
+                            <span id="resumo-bilhete-valor">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Recargas recentes -->
+                    <div class="card">
+                        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Recargas recentes</h3>
+                        <ul class="transacoes">
+                            <li class="transacao">
+                                <div class="transacao-info">
+                                    <span class="transacao-nome">•••• •••• •••• 4821</span>
+                                    <span class="transacao-data">Mensal · 01 Jun, 09h00</span>
+                                </div>
+                                <span class="transacao-valor negativo">- R$ 167,40</span>
+                            </li>
+                            <li class="transacao">
+                                <div class="transacao-info">
+                                    <span class="transacao-nome">•••• •••• •••• 4821</span>
+                                    <span class="transacao-data">TOP · 15 Mai, 14h30</span>
+                                </div>
+                                <span class="transacao-valor negativo">- R$ 50,00</span>
+                            </li>
+                            <li class="transacao">
+                                <div class="transacao-info">
+                                    <span class="transacao-nome">•••• •••• •••• 4821</span>
+                                    <span class="transacao-data">Comum · 01 Mai, 08h15</span>
+                                </div>
+                                <span class="transacao-valor negativo">- R$ 30,00</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal sucesso -->
+    <div class="sucesso-modal" id="modal-sucesso-bilhete">
+        <div class="sucesso-conteudo">
+            <div class="sucesso-icone">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="sucesso-titulo">Recarga realizada!</div>
+            <p class="sucesso-descricao">Seu Bilhete Único foi recarregado com sucesso</p>
+            <div class="sucesso-detalhes">
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Cartão:</span>
+                    <span class="detalhe-valor" id="modal-bilhete-numero">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Tipo:</span>
+                    <span class="detalhe-valor" id="modal-bilhete-tipo">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Valor:</span>
+                    <span class="detalhe-valor" id="modal-bilhete-valor">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Protocolo:</span>
+                    <span class="detalhe-valor" id="modal-bilhete-protocolo">-</span>
+                </div>
+            </div>
+            <button class="btn btn-primario" onclick="fecharModalBilhete()">
+                Voltar ao início
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

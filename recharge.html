@@ -75,13 +75,13 @@
                 <h1>Recarga de Celular <i class="fa-solid fa-mobile-screen"></i></h1>
                 <p>Recarregue seu celular com poucos cliques</p>
             </div>
-
+            <br>
             <div class="card-saldo">
                 <div class="card-saldo-topo">
                     <span>Saldo disponível</span>
                 </div>
                 <div class="card-saldo-valor" id="saldo-valor-recharge">
-                    R$ 0,00
+                    R$ 4.250,00
                 </div>
             </div>
 
@@ -96,14 +96,8 @@
 
                     <div class="form-grupo">
                         <label class="form-label" for="numero-celular">Número do celular *</label>
-                        <input
-                            type="tel"
-                            class="form-input"
-                            id="numero-celular"
-                            placeholder="(XX)XXXXX-XXXX"
-                            maxlength="15"
-                            oninput="validarFormatoTelefone()"
-                        >
+                        <input type="tel" class="form-input" id="numero-celular" placeholder="(XX)XXXXX-XXXX"
+                            maxlength="15" oninput="validarFormatoTelefone()">
                         <div class="form-erro" id="erro-telefone">
                             Formato inválido. Use (DDD) 90000-0000
                         </div>
@@ -113,19 +107,23 @@
                         <label class="form-label">Operadora *</label>
 
                         <div class="operadoras">
-                            <button type="button" class="operadora-btn" data-operadora="vivo" onclick="selecionarOperadora(this)">
+                            <button type="button" class="operadora-btn" data-operadora="vivo"
+                                onclick="selecionarOperadora(this)">
                                 <i class="fa-solid fa-phone"></i><br>Vivo
                             </button>
 
-                            <button type="button" class="operadora-btn" data-operadora="claro" onclick="selecionarOperadora(this)">
+                            <button type="button" class="operadora-btn" data-operadora="claro"
+                                onclick="selecionarOperadora(this)">
                                 <i class="fa-solid fa-phone"></i><br>Claro
                             </button>
 
-                            <button type="button" class="operadora-btn" data-operadora="tim" onclick="selecionarOperadora(this)">
+                            <button type="button" class="operadora-btn" data-operadora="tim"
+                                onclick="selecionarOperadora(this)">
                                 <i class="fa-solid fa-phone"></i><br>TIM
                             </button>
 
-                            <button type="button" class="operadora-btn" data-operadora="oi" onclick="selecionarOperadora(this)">
+                            <button type="button" class="operadora-btn" data-operadora="oi"
+                                onclick="selecionarOperadora(this)">
                                 <i class="fa-solid fa-phone"></i><br>Oi
                             </button>
                         </div>
@@ -146,17 +144,10 @@
 
                     <div class="form-grupo">
                         <label class="form-label" for="valor-customizado">Outro valor</label>
-                        <input
-                            type="number"
-                            class="form-input"
-                            id="valor-customizado"
-                            placeholder="Digite um valor acima de R$ 200"
-                            min="200"
-                            step="1"
-                            oninput="limparSelecaoRapida()"
-                            onfocus="aoFocarValorCustomizado()"
-                            onblur="aoSairValorCustomizado()"
-                        >
+                        <input type="number" class="form-input" id="valor-customizado"
+                            placeholder="Digite um valor acima de R$ 200" min="200" step="1"
+                            oninput="limparSelecaoRapida()" onfocus="aoFocarValorCustomizado()"
+                            onblur="aoSairValorCustomizado()">
                     </div>
 
                     <div class="btns-acao">
@@ -200,6 +191,29 @@
                         </h3>
 
                         <ul class="transacoes">
+                            <li class="transacao">
+                                <div class="transacao-info">
+                                    <span class="transacao-nome">(11) 98765-4321</span>
+                                    <span class="transacao-data">Vivo · 02 Jun, 10h15</span>
+                                </div>
+                                <span class="transacao-valor negativo">- R$ 30,00</span>
+                            </li>
+                            <br>
+                            <li class="transacao">
+                                <div class="transacao-info">
+                                    <span class="transacao-nome">(21) 91234-5678</span>
+                                    <span class="transacao-data">Claro · 28 Mai, 14h30</span>
+                                </div>
+                                <span class="transacao-valor negativo">- R$ 50,00</span>
+                            </li>
+                            <br>
+                            <li class="transacao">
+                                <div class="transacao-info">
+                                    <span class="transacao-nome">(11) 98765-4321</span>
+                                    <span class="transacao-data">Vivo · 01 Mai, 09h00</span>
+                                </div>
+                                <span class="transacao-valor negativo">- R$ 30,00</span>
+                            </li>
                         </ul>
                     </div>
 
@@ -280,7 +294,7 @@
         </div>
     </div>
 
-    <script src="../js/recharge.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
