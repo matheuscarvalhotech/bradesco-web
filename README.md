@@ -1,4 +1,4 @@
-# 🏦 Bradesco Web — Internet Banking
+# 🏦 Bradesco Web
 
 > Simulação de internet banking do Bradesco desenvolvida como projeto acadêmico e de portfólio, com foco em experiência do usuário, boas práticas de desenvolvimento front-end e trabalho colaborativo com Git e GitHub.
 
@@ -93,5 +93,4 @@ Projeto desenvolvido para a disciplina de **Interação Humano-Computador e UX**
 ---
 
 ## 📄 Licença
-
 Este projeto é de uso acadêmico e educacional. Todos os direitos da marca Bradesco pertencem ao **Banco Bradesco S.A.**
