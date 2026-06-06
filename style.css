@@ -10,7 +10,7 @@
   --vermelho-escuro: #990000;
   --fundo: #F5F5F5;
   --branco: #FFFFFF;
-  --texto: #333333;
+  --texto: #000000;
   --texto-claro: #777777;
   --sidebar-largura: 220px;
   --header-altura: 65px;
@@ -713,6 +713,9 @@ body {
             margin-bottom: 24px;
             text-align: left;
         }
+        .dark-mode .sucesso-detalhes {
+            background-color: #2a2a2a;
+        }
 
         .detalhe-linha {
             display: flex;
@@ -970,3 +973,1478 @@ body {
             padding: 16px;
             text-align: center;
         }
+
+/* --- CRIPTOMOEDAS --- */
+.crypto-card {
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.crypto-card:hover {
+    border-color: var(--vermelho);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(204, 0, 0, 0.1);
+}
+
+.crypto-card.ativo {
+    border-color: var(--vermelho);
+    background-color: #FFF0F0;
+}
+
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--texto);
+        }
+
+        .filtro-grupo input[type="date"],
+        .filtro-grupo select {
+            padding: 10px 12px;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: inherit;
+            background-color: var(--branco);
+            color: var(--texto);
+            cursor: pointer;
+        }
+
+        .filtro-grupo input[type="date"]:focus,
+        .filtro-grupo select:focus {
+            outline: none;
+            border-color: var(--vermelho);
+            box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.1);
+        }
+
+        .extrato-acoes {
+            display: flex;
+            gap: 12px;
+            margin-left: auto;
+        }
+
+        .btn-acao {
+            background-color: var(--branco);
+            color: var(--texto);
+            border: 1px solid #E0E0E0;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-acao:hover {
+            background-color: #F5F5F5;
+            border-color: var(--vermelho);
+            color: var(--vermelho);
+        }
+
+        .extrato-resumo {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .resumo-card {
+            flex: 1;
+            background-color: var(--branco);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+        }
+
+        .resumo-label {
+            font-size: 12px;
+            color: var(--texto-claro);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .resumo-valor {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .extrato-lista {
+            background-color: var(--branco);
+            border-radius: 12px;
+            border: 1px solid #E0E0E0;
+            overflow: hidden;
+        }
+
+        .extrato-tabela {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .extrato-tabela thead {
+            background-color: #F9F9F9;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .extrato-tabela th {
+            padding: 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--texto-claro);
+        }
+
+        .extrato-tabela tbody tr {
+            border-bottom: 1px solid #F0F0F0;
+            transition: background-color 0.2s;
+        }
+
+        .extrato-tabela tbody tr:hover {
+            background-color: #FAFAFA;
+        }
+
+        .extrato-tabela td {
+            padding: 16px;
+            font-size: 14px;
+            color: var(--texto);
+        }
+
+        .transacao-descricao {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .transacao-categoria {
+            font-size: 12px;
+            color: var(--texto-claro);
+        }
+
+        .extrato-valor {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .paginacao {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 24px;
+            background-color: var(--branco);
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .paginacao button {
+            padding: 8px 12px;
+            border: 1px solid #E0E0E0;
+            background-color: var(--branco);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .paginacao button:hover {
+            border-color: var(--vermelho);
+            color: var(--vermelho);
+        }
+
+        .paginacao button.ativo {
+            background-color: var(--vermelho);
+            color: var(--branco);
+            border-color: var(--vermelho);
+        }
+
+        .paginacao button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .extrato-info {
+            font-size: 12px;
+            color: var(--texto-claro);
+            padding: 16px;
+            text-align: center;
+        }
+
+/* --- CRIPTOMOEDAS --- */
+.crypto-card {
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.crypto-card:hover {
+    border-color: var(--vermelho);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(204, 0, 0, 0.1);
+}
+
+.crypto-card.ativo {
+    border-color: var(--vermelho);
+    background-color: #FFF0F0;
+}
+
+.crypto-card.ativo .card-resumo-icone {
+    background-color: var(--vermelho);
+    color: var(--branco);
+}
+
+.chart-container {
+    padding: 16px;
+    background: var(--branco);
+    border-radius: 8px;
+}
+
+/* --- CRIPTOMOEDAS 2.0 (PRODUCTION GRADE) --- */
+:root {
+    --card-bg: var(--branco);
+    --body-bg: var(--fundo);
+    --text-color: var(--texto);
+    --border-color: #E0E0E0;
+    --verde: #1A7A3C;
+    --verde-dark: #22c55e;
+}
+.dark-mode {
+    --card-bg: #1e1e1e;
+    --body-bg: #121212;
+    --text-color: #f5f5f5;
+    --border-color: #333;
+    --branco: #1e1e1e;
+    --fundo: #121212;
+    --texto: #ffffff;
+    --text-color: #ffffff;
+    --verde: var(--verde-dark);
+}
+
+body.crypto-theme {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif; /* Tipografia Inter */
+    transition: background 0.3s, color 0.3s;
+}
+.sora-font {
+    font-family: 'Sora', sans-serif; /* Tipografia Sora para Títulos */
+}
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Foco Global Acessível */
+button:focus-visible, input:focus-visible, select:focus-visible, .crypto-table tr:focus-visible {
+    outline: 2px solid var(--vermelho);
+    outline-offset: 2px;
+}
+
+.crypto-theme .card, .crypto-theme .card-resumo, .crypto-theme .extrato-lista {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+.crypto-theme .header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+.crypto-theme .sidebar {
+    border-right-color: var(--border-color);
+}
+.dark-mode .sidebar {
+    background-color: var(--card-bg); /* Bug 3.1: Fundo da Sidebar no Dark */
+}
+
+.crypto-theme .form-input {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.risk-banner {
+    background-color: #FFF3CD;
+    color: #856404;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.risk-icon {
+    color: #B45309; /* Bug 2.4: Ícone com melhor contraste */
+    font-size: 16px;
+}
+.dark-mode .risk-banner {
+    background-color: #3e3215;
+    color: #ffd04b;
+}
+
+#btn-dark-mode {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--texto-claro);
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+#btn-dark-mode:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+.dark-mode #btn-dark-mode {
+    color: var(--texto); /* Bug 3.6: Cor no modo escuro */
+}
+.dark-mode #btn-dark-mode:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Saldos Unificados */
+.saldo-portfolio-container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: stretch;
+    flex-wrap: wrap; /* Bug 5: Responsividade */
+}
+.saldo-portfolio-container > * {
+    min-width: 240px;
+}
+.saldo-fiduciario, .saldo-cripto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 24px;
+    height: 140px;
+}
+.saldo-fiduciario {
+    background-color: var(--branco);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--vermelho);
+    color: var(--texto);
+}
+.saldo-fiduciario .card-saldo-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--texto);
+}
+.saldo-fiduciario .card-saldo-valor {
+    color: var(--texto);
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 12px;
+    margin-bottom: auto;
+}
+.saldo-cripto {
+    background-color: var(--vermelho);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.saldo-cripto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(204,0,0,0.18);
+}
+.saldo-cripto .card-saldo-topo {
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+.saldo-cripto .card-saldo-topo .tooltip-icon {
+    color: rgba(255, 255, 255, 0.7);
+}
+.saldo-cripto .card-saldo-valor {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 12px;
+    margin-bottom: auto;
+}
+.dark-mode .saldo-fiduciario {
+    background-color: var(--card-bg);
+}
+
+/* Botões de Ocultar/Mostrar (só ícone) */
+.btn-ocultar-fiat, .btn-ocultar-cripto {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+}
+
+/* Card branco — olho PRETO no claro */
+.btn-ocultar-fiat {
+    color: #000000;
+}
+.btn-ocultar-fiat i {
+    color: #000000;
+}
+.btn-ocultar-fiat:hover {
+    background: rgba(0,0,0,0.08);
+}
+
+/* Card branco — olho BRANCO no escuro */
+.dark-mode .btn-ocultar-fiat {
+    color: #ffffff;
+}
+.dark-mode .btn-ocultar-fiat i {
+    color: #ffffff;
+}
+.dark-mode .btn-ocultar-fiat:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+/* Card vermelho — olho BRANCO sempre */
+.btn-ocultar-cripto {
+    color: #ffffff;
+}
+.btn-ocultar-cripto i {
+    color: #ffffff;
+}
+.btn-ocultar-cripto:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.portfolio-chart-card {
+    flex: 1;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.pie-container {
+    height: 120px;
+    width: 100%;
+}
+
+.panel-margin {
+    margin-top: 24px;
+}
+
+/* Layout Principal Grid */
+.crypto-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 980px) {
+    .crypto-layout {
+        grid-template-columns: 1fr;
+    }
+}
+.main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Time Filters */
+.grafico-header {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.grafico-titulo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.live-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.live-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--texto);
+}
+.live-change {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+.live-change.up {
+    background: rgba(26,122,60,0.1);
+    color: #1A7A3C;
+}
+.live-change.down {
+    background: rgba(204,0,0,0.1);
+    color: #CC0000;
+}
+.dark-mode .live-change.up {
+    color: #22c55e;
+    background: rgba(34,197,94,0.15);
+}
+.live-clock {
+    font-size: 12px;
+    color: var(--texto-claro);
+    font-weight: 500;
+}
+.btn-reset-zoom {
+    color: var(--texto-claro) !important;
+    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-reset-zoom:hover {
+    color: var(--vermelho) !important;
+}
+.timeframe-filters {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.time-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.time-btn:hover {
+    background-color: rgba(0,0,0,0.05); /* Bug 2.3: Cor de Hover distinta da Ativa */
+}
+.dark-mode .time-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.time-btn.ativo {
+    background: var(--vermelho);
+    color: var(--branco);
+    border-color: var(--vermelho);
+}
+.time-btn.ativo:hover {
+    background: #a30000;
+}
+
+/* Conversor Global */
+.conversor-flex {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+.conv-input {
+    flex: 1;
+    min-width: 200px;
+}
+.conv-input label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    display: block;
+    margin-bottom: 8px;
+}
+.input-with-select {
+    display: flex;
+    position: relative;
+}
+.input-with-select input {
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+    flex: 2;
+}
+.select-wrapper {
+    flex: 1;
+    position: relative;
+}
+.input-with-select select {
+    border-radius: 0 8px 8px 0;
+    width: 100%;
+    appearance: none; /* Bug 3.4: Setas nativas removidas no Select */
+    padding-right: 30px;
+}
+.select-chevron {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--texto-claro);
+    font-size: 10px;
+}
+
+/* Botão Inverter */
+.btn-swap {
+    background: var(--fundo);
+    border: 1px solid var(--border-color);
+    color: var(--texto);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    margin-top: 24px;
+}
+.btn-swap:hover {
+    background: #E0E0E0;
+}
+.dark-mode .btn-swap {
+    background: #333;
+}
+.dark-mode .btn-swap:hover {
+    background: #444;
+}
+
+/* Trade Tabs & Sidebar */
+.trade-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+.trade-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+.trade-tab.ativo {
+    color: var(--vermelho);
+    border-bottom-color: var(--vermelho);
+}
+.quick-values {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.quick-values button {
+    flex: 1;
+    padding: 8px;
+    font-size: 12px;
+}
+.tax-details {
+    margin-top: 16px;
+    background: var(--body-bg);
+    padding: 16px;
+    border-radius: 8px;
+}
+.dark-mode .tax-details {
+    background-color: color-mix(in oklab, var(--card-bg) 92%, white); /* Bug 3.2: Contraste do Tax Details */
+}
+.total-line {
+    border-top: 1px solid var(--border-color);
+    padding-top: 8px;
+    margin-top: 8px;
+}
+
+/* Caixa de Resultado do Trade (Bug 2.2 e 3.3) */
+.resultado-box {
+    background: color-mix(in oklab, var(--vermelho) 4%, var(--card-bg));
+    border: 1px solid var(--border-color);
+}
+.dark-mode .resultado-box {
+    background: color-mix(in oklab, var(--vermelho) 8%, var(--card-bg));
+}
+.resultado-valor {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--texto);
+}
+.resultado-sigla {
+    font-size: 14px;
+    color: var(--texto-claro);
+}
+
+.transacao-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Vitrine Tabela e Header */
+.vitrine-card {
+    padding: 24px;
+}
+.vitrine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.vitrine-search {
+    flex: 1;
+    max-width: 300px;
+    position: relative;
+}
+@media (max-width: 600px) {
+    .vitrine-search { max-width: 100%; }
+}
+.vitrine-search i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--texto-claro);
+}
+.vitrine-search input {
+    width: 100%;
+    padding-left: 48px;
+    border-radius: 99px;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+}
+.cat-tab {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.cat-tab.ativo, .cat-tab:hover {
+    background: var(--vermelho);
+    color: var(--branco);
+    border-color: var(--vermelho);
+}
+
+/* Table Acessibility and Design */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+.crypto-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.crypto-table th {
+    text-align: left;
+    padding: 12px;
+    color: var(--texto-claro);
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-color);
+}
+.crypto-table td {
+    padding: 16px 12px;
+    color: var(--texto);
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+.crypto-table tr {
+    transition: background-color 0.2s;
+    cursor: pointer; /* Bug 2.5: Cursor pointer em toda a linha */
+}
+.crypto-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.045);
+}
+.dark-mode .crypto-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.crypto-table .sortable {
+    cursor: pointer;
+}
+.crypto-table .sortable:hover {
+    color: var(--texto);
+}
+.sort-icon {
+    margin-left: 4px;
+    color: var(--texto-claro);
+}
+.sortable.active .sort-icon {
+    color: var(--vermelho); /* Bug 2.6: Ícone destacado */
+}
+
+@media (max-width: 600px) {
+    .th-var, .td-var { display: none; } /* Condensar variação no mobile */
+}
+
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+.text-success { color: var(--verde); }
+.text-danger { color: #CC0000; }
+.text-muted { color: var(--texto-claro); }
+
+.star-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+}
+.star-btn.fav-ativo {
+    color: #FFC107;
+}
+
+.crypto-row-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.crypto-row-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+/* Variação Pill Style */
+.chip-var {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.chip-var.up { background: rgba(26,122,60,0.1); color: var(--verde); }
+.chip-var.down { background: rgba(204,0,0,0.1); color: #CC0000; }
+.dark-mode .chip-var.up { color: var(--verde-dark); background: rgba(34,197,94,0.15); }
+
+/* Pulse Animation (Respects Reduced Motion) */
+.btn-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.pulse-dot-container {
+    position: relative;
+    width: 8px;
+    height: 8px;
+}
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--texto-claro);
+    border-radius: 50%;
+    position: absolute;
+    top: 0; left: 0;
+}
+.pulse-dot::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0; left: 0;
+    border: 2px solid transparent;
+}
+.btn-live.ativo {
+    background: var(--verde);
+    border-color: var(--verde);
+    color: #fff;
+}
+.dark-mode .btn-live.ativo {
+    background: var(--verde-dark);
+    border-color: var(--verde-dark);
+}
+.btn-live.ativo .pulse-dot {
+    background-color: #FFF;
+}
+.btn-live.ativo .pulse-dot::after {
+    border-color: #FFF;
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-live.ativo .pulse-dot::after {
+        animation: none; /* Desligar pulso A11y */
+    }
+}
+@keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+/* Formulários Dark Mode Override */
+.dark-mode input, .dark-mode select {
+    background-color: #2a2a2a;
+    color: #f5f5f5;
+    border-color: #444;
+}
+.dark-mode input::placeholder {
+    color: #888;
+}
+
+/* Skeletons */
+.skeleton-light td {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    opacity: 0.5;
+}
+.dark-mode .skeleton-light td {
+    background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+}
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+.mt-3 { margin-top: 16px; }
+.mt-4 { margin-top: 24px; }
+.w-100 { width: 100%; }
+
+:root {
+    --card-bg: var(--branco);
+    --body-bg: var(--fundo);
+    --text-color: var(--texto);
+    --border-color: #E0E0E0;
+}
+.dark-mode {
+    --card-bg: #1e1e1e;
+    --body-bg: #121212;
+    --text-color: #f5f5f5;
+    --border-color: #333;
+    --branco: #1e1e1e; /* Sobrescreve var(--branco) localmente */
+    --fundo: #121212;
+    --texto: #f5f5f5;
+}
+body.crypto-theme {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+.crypto-theme .card, .crypto-theme .card-resumo, .crypto-theme .extrato-lista {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+.crypto-theme .header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+.crypto-theme .sidebar {
+    border-right-color: var(--border-color);
+}
+.crypto-theme .form-input {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.risk-banner {
+    background-color: #FFF3CD;
+    color: #856404;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.dark-mode .risk-banner {
+    background-color: #3e3215;
+    color: #ffd04b;
+}
+
+#btn-dark-mode {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--texto-claro);
+    cursor: pointer;
+    margin-right: 16px;
+}
+
+.saldo-portfolio-container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.saldo-cripto {
+    flex: 2;
+    margin-bottom: 0;
+}
+.portfolio-chart-card {
+    flex: 1;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.pie-container {
+    height: 120px;
+    width: 100%;
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 24px;
+}
+.search-container i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--texto-claro);
+}
+.search-container input {
+    width: 100%;
+    padding-left: 48px;
+    border-radius: 99px;
+}
+
+.crypto-vitrine {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.btc-color { color: #F7931A !important; background-color: rgba(247, 147, 26, 0.1) !important; }
+.eth-color { color: #627EEA !important; background-color: rgba(98, 126, 234, 0.1) !important; }
+.ltc-color { color: #345D9D !important; background-color: rgba(52, 93, 157, 0.1) !important; }
+
+.crypto-card-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.pct-change {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+.text-success { color: #1A7A3C; }
+.text-danger { color: #CC0000; }
+.text-muted { color: var(--texto-claro); }
+
+.crypto-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.grafico-header {
+    margin-bottom: 8px;
+}
+.timeframe-filters {
+    display: flex;
+    gap: 8px;
+}
+.time-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    cursor: pointer;
+}
+.time-btn.ativo, .time-btn:hover {
+    background: var(--vermelho);
+    color: var(--branco);
+    border-color: var(--vermelho);
+}
+
+.conversor-flex {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+.conv-input {
+    flex: 1;
+}
+.conv-input label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    display: block;
+    margin-bottom: 8px;
+}
+.input-with-select {
+    display: flex;
+}
+.input-with-select input {
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+    flex: 2;
+}
+.input-with-select select {
+    border-radius: 0 8px 8px 0;
+    flex: 1;
+}
+.conv-icon {
+    padding-top: 24px;
+    color: var(--texto-claro);
+}
+
+.trade-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+.trade-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+.trade-tab.ativo {
+    color: var(--vermelho);
+    border-bottom-color: var(--vermelho);
+}
+.quick-values {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.quick-values button {
+    flex: 1;
+    padding: 8px;
+    font-size: 12px;
+}
+.tax-details {
+    margin-top: 16px;
+    background: var(--body-bg);
+    padding: 16px;
+    border-radius: 8px;
+}
+.total-line {
+    border-top: 1px solid var(--border-color);
+    padding-top: 8px;
+    margin-top: 8px;
+}
+.tooltip-icon {
+    font-size: 12px;
+    color: var(--texto-claro);
+    cursor: help;
+}
+
+.news-list {
+    list-style: none;
+    padding: 0;
+}
+.news-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.news-list li:last-child {
+    border-bottom: none;
+}
+.news-list strong {
+    font-size: 14px;
+    color: var(--texto);
+    display: block;
+    margin-bottom: 4px;
+}
+.news-list p {
+    font-size: 12px;
+    color: var(--texto-claro);
+}
+
+.btn-touch {
+    min-height: 44px; /* Acessibilidade Mobile */
+}
+.crypto-card:focus {
+    outline: 2px solid var(--vermelho);
+    outline-offset: 2px;
+}
+
+/* Skeleton Animation */
+@keyframes skeleton-loading {
+    0% { background-color: #f0f0f0; }
+    100% { background-color: #e0e0e0; }
+}
+.dark-mode .skeleton {
+    animation: skeleton-loading-dark 1s linear infinite alternate;
+}
+@keyframes skeleton-loading-dark {
+    0% { background-color: #2a2a2a; }
+    100% { background-color: #333333; }
+}
+.skeleton * {
+    opacity: 0.3;
+}
+
+/* --- CRIPTOMOEDAS: MODO TABELA, AO VIVO E CORREÇÕES --- */
+.dark-mode input, .dark-mode select {
+    background-color: #2a2a2a;
+    color: #f5f5f5;
+    border-color: #444;
+}
+.dark-mode input::placeholder {
+    color: #888;
+}
+
+.saldo-portfolio-container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: stretch;
+}
+.saldo-fiduciario, .saldo-cripto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 24px;
+}
+.saldo-fiduciario {
+    background-color: var(--branco);
+    border: 1px solid var(--border-color);
+}
+.saldo-fiduciario .card-saldo-valor {
+    color: var(--texto);
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+.saldo-cripto {
+    background-color: var(--vermelho);
+}
+.saldo-cripto .card-saldo-topo {
+    color: #ffffff;
+}
+.saldo-cripto .card-saldo-topo .tooltip-icon {
+    color: rgba(255, 255, 255, 0.7);
+}
+.saldo-cripto .card-saldo-valor {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+.dark-mode .saldo-fiduciario {
+    background-color: var(--card-bg);
+}
+
+.resultado-box {
+    background: #f9f9f9;
+}
+.dark-mode .resultado-box {
+    background: #2a2a2a;
+}
+
+
+.vitrine-card {
+    padding: 24px;
+}
+.vitrine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.category-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+}
+.cat-tab {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto-claro);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.cat-tab.ativo, .cat-tab:hover {
+    background: var(--vermelho);
+    color: var(--branco);
+    border-color: var(--vermelho);
+}
+
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+.crypto-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.crypto-table th {
+    text-align: left;
+    padding: 12px;
+    color: var(--texto-claro);
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-color);
+}
+.crypto-table td {
+    padding: 16px 12px;
+    color: var(--texto);
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+.crypto-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+.dark-mode .crypto-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.crypto-table .sortable {
+    cursor: pointer;
+}
+.crypto-table .sortable:hover {
+    color: var(--texto);
+}
+.text-right {
+    text-align: right !important;
+}
+.text-center {
+    text-align: center !important;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 16px;
+    cursor: pointer;
+}
+.star-btn.fav-ativo {
+    color: #FFC107;
+}
+
+.crypto-row-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.crypto-row-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.btn-comprar-micro {
+    background: transparent;
+    border: 1px solid var(--vermelho);
+    color: var(--vermelho);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-comprar-micro:hover {
+    background: var(--vermelho);
+    color: var(--branco);
+}
+
+.btn-swap {
+    background: var(--fundo);
+    border: 1px solid var(--border-color);
+    color: var(--texto);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+.btn-swap:hover {
+    background: #E0E0E0;
+}
+.dark-mode .btn-swap {
+    background: #333;
+}
+.dark-mode .btn-swap:hover {
+    background: #444;
+}
+
+.btn-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-live.ativo {
+    background: #1A7A3C;
+    border-color: #1A7A3C;
+}
+
+.pulse-dot-container {
+    position: relative;
+    width: 8px;
+    height: 8px;
+}
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #CC0000;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.pulse-dot::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #CC0000;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.btn-live.ativo .pulse-dot, .btn-live.ativo .pulse-dot::after {
+    background-color: #FFF;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3); opacity: 0; }
+}
