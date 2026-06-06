@@ -767,7 +767,6 @@ document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('
 
 
 /* CRIPTOMOEDAS */
- 
 // --- 1. ESTADO GLOBAL ---
 let cryptoData = {};
 let topCoins = [];
