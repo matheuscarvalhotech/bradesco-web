@@ -1634,509 +1634,366 @@ input:checked+.slider:before {
 }
 
 /* CRIPTOMOEDAS */
-/* --- Tipografia extra (Inter + Sora via Google Fonts) --- */
-.sora-font  { font-family: 'Sora', sans-serif; }
-.tabular-nums { font-variant-numeric: tabular-nums; }
-
-/* --- Utilitários gerais usados na página --- */
-.mt-3 { margin-top: 16px; }
-.mt-4 { margin-top: 24px; }
-.w-100 { width: 100%; }
-.panel-margin { margin-top: 24px; }
-.text-right  { text-align: right !important; }
-.text-center { text-align: center !important; }
-.text-success { color: #1A7A3C; }
-.text-danger  { color: #CC0000; }
-.text-muted   { color: var(--texto-claro); }
-
-/* --- Foco acessível global --- */
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-    outline: 2px solid var(--vermelho);
-    outline-offset: 2px;
-}
 
 /* --- Alerta de risco --- */
-.risk-banner {
-    background-color: #FFF3CD;
+.cr-risk-banner {
+    background: #FFF3CD;
     color: #856404;
-    padding: 12px 24px;
     border-radius: 8px;
-    margin-top: 24px;
-    font-size: 14px;
+    padding: 12px 20px;
+    font-size: 13px;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 12px;
-}
-.risk-icon {
-    color: #B45309;
-    font-size: 16px;
+    gap: 10px;
+    margin-bottom: 8px;
 }
 
-/* --- Cards de saldo (BRL e Cripto) --- */
-.saldo-portfolio-container {
+/* --- Cards de saldo --- */
+.cr-saldos {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     margin-bottom: 24px;
-    align-items: stretch;
     flex-wrap: wrap;
 }
-.saldo-portfolio-container > * { min-width: 240px; }
+.cr-saldos > * { min-width: 220px; }
 
-.saldo-fiduciario,
-.saldo-cripto {
+.cr-saldo-fiat,
+.cr-saldo-cripto {
     flex: 1;
+    border-radius: 12px;
+    padding: 20px 24px;
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: 8px;
-    padding: 24px;
-    height: 140px;
 }
-.saldo-fiduciario {
-    background-color: var(--branco);
+.cr-saldo-fiat {
+    background: var(--branco);
     border: 1px solid #E0E0E0;
-    border-left: 3px solid var(--vermelho);
-    color: var(--texto);
+    border-left: 4px solid var(--vermelho);
 }
-.saldo-fiduciario .card-saldo-topo {
+.cr-saldo-cripto {
+    background: var(--vermelho);
+}
+.cr-saldo-topo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--texto);
-}
-.saldo-fiduciario .card-saldo-valor {
-    color: var(--texto);
-    font-size: 32px;
-    font-weight: 700;
-    margin-top: 12px;
-}
-.saldo-cripto {
-    background-color: var(--vermelho);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.saldo-cripto:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(204, 0, 0, 0.18);
-}
-.saldo-cripto .card-saldo-topo {
-    color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 600;
-}
-.saldo-cripto .card-saldo-topo .tooltip-icon { color: rgba(255,255,255,0.7); }
-.saldo-cripto .card-saldo-valor {
-    color: #ffffff;
-    font-size: 32px;
-    font-weight: 700;
-    margin-top: 12px;
-}
-.tooltip-icon {
-    font-size: 12px;
     color: var(--texto-claro);
-    cursor: help;
 }
+.cr-topo-branco { color: rgba(255,255,255,0.85); }
 
-/* Botões ocultar saldo */
-.btn-ocultar-fiat,
-.btn-ocultar-cripto {
+.cr-saldo-valor {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--texto);
+    margin-top: 10px;
+}
+.cr-saldo-valor-branco { color: #fff; }
+
+.cr-btn-eye {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-    padding: 6px;
+    color: #999;
+    font-size: 15px;
+    padding: 4px;
     border-radius: 50%;
-    transition: background 0.2s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
+    transition: 0.2s;
+    display: flex; align-items: center;
 }
-.btn-ocultar-fiat,
-.btn-ocultar-fiat i { color: #000000; }
-.btn-ocultar-fiat:hover { background: rgba(0,0,0,0.08); }
-.btn-ocultar-cripto,
-.btn-ocultar-cripto i { color: #ffffff; }
-.btn-ocultar-cripto:hover { background: rgba(255,255,255,0.2); }
+.cr-btn-eye:hover { background: rgba(0,0,0,0.06); }
+.cr-btn-eye-branco { color: rgba(255,255,255,0.7); }
+.cr-btn-eye-branco:hover { background: rgba(255,255,255,0.15); }
 
-/* Card de pizza do portfólio */
-.portfolio-chart-card {
+/* Pizza */
+.cr-pizza-card {
     flex: 1;
-    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 0 !important;
 }
-.pie-container { height: 120px; width: 100%; }
+.cr-titulo-pizza {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 8px;
+}
+.cr-pizza-container { height: 110px; width: 100%; }
 
-/* --- Layout de grid principal --- */
-.crypto-layout {
+/* --- Layout grid principal --- */
+.cr-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 24px;
+    gap: 20px;
+    align-items: start;
 }
-.main-column,
-.side-column {
+.cr-col-main,
+.cr-col-side {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
-@media (max-width: 980px) {
-    .crypto-layout { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+    .cr-layout { grid-template-columns: 1fr; }
 }
 
-/* --- Cabeçalho do gráfico (filtros de tempo) --- */
-.grafico-header {
-    margin-bottom: 8px;
+/* --- Cabeçalho do gráfico --- */
+.cr-grafico-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 12px;
 }
-.grafico-titulo-grupo {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-.live-info-bar {
+.cr-live-bar {
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
 }
-.live-price {
-    font-size: 20px;
+.cr-live-preco {
+    font-size: 18px;
     font-weight: 700;
     color: var(--texto);
 }
-.live-change {
-    font-size: 13px;
+.cr-live-var {
+    font-size: 12px;
     font-weight: 600;
     padding: 2px 8px;
-    border-radius: 12px;
+    border-radius: 20px;
 }
-.live-change.up  { background: rgba(26,122,60,0.1);  color: #1A7A3C; }
-.live-change.down { background: rgba(204,0,0,0.1); color: #CC0000; }
-.live-clock {
-    font-size: 12px;
-    color: var(--texto-claro);
-    font-weight: 500;
-}
-.timeframe-filters {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.time-btn {
+.cr-live-var.up   { background: rgba(26,122,60,0.1); color: #1A7A3C; }
+.cr-live-var.down { background: rgba(204,0,0,0.1);  color: #CC0000; }
+
+.cr-tf-filters { display: flex; gap: 6px; }
+.cr-tf-btn {
     background: transparent;
     border: 1px solid #E0E0E0;
     border-radius: 4px;
-    padding: 6px 12px;
+    padding: 5px 12px;
     font-size: 12px;
     font-weight: 600;
     color: var(--texto-claro);
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: 0.2s;
 }
-.time-btn:hover { background-color: rgba(0,0,0,0.05); }
-.time-btn.ativo,
-.time-btn.ativo:hover {
+.cr-tf-btn:hover { background: #f5f5f5; }
+.cr-tf-btn.cr-tf-ativo {
     background: var(--vermelho);
-    color: var(--branco);
+    color: #fff;
     border-color: var(--vermelho);
 }
-.btn-reset-zoom {
-    color: var(--texto-claro) !important;
-    padding: 6px 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-.btn-reset-zoom:hover { color: var(--vermelho) !important; }
-
-/* Botão Ao Vivo com ponto pulsante */
-.btn-live { display: flex; align-items: center; gap: 6px; }
-.btn-live.ativo { background: #1A7A3C; border-color: #1A7A3C; color: #fff; }
-.pulse-dot-container { position: relative; width: 8px; height: 8px; }
-.pulse-dot {
-    width: 8px; height: 8px;
-    background-color: var(--texto-claro);
-    border-radius: 50%;
-    position: absolute; top: 0; left: 0;
-}
-.btn-live.ativo .pulse-dot { background-color: #FFF; }
-.pulse-dot::after {
-    content: '';
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    position: absolute; top: 0; left: 0;
-    border: 2px solid transparent;
-}
-.btn-live.ativo .pulse-dot::after {
-    border-color: #FFF;
-    animation: cripto-pulse-ring 1.5s cubic-bezier(0.215,0.61,0.355,1) infinite;
-}
-@keyframes cripto-pulse-ring {
-    0%   { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(3); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-    .btn-live.ativo .pulse-dot::after { animation: none; }
+.cr-chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    margin-top: 12px;
 }
 
-/* --- Conversor --- */
-.conversor-flex {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-top: 16px;
-    flex-wrap: wrap;
+/* --- Tabela de criptos --- */
+.cr-vitrine { padding: 20px; }
+.cr-vitrine-header { margin-bottom: 16px; }
+.cr-search-wrap {
+    position: relative;
+    max-width: 300px;
 }
-.conv-input { flex: 1; min-width: 200px; }
-.conv-input label {
+.cr-search-wrap i {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--texto-claro);
+    font-size: 13px;
+}
+.cr-search-wrap input { padding-left: 40px; border-radius: 99px; }
+.cr-table-wrap { overflow-x: auto; }
+.cr-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.cr-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--texto-claro);
+    border-bottom: 1px solid #F0F0F0;
+}
+.cr-table td {
+    padding: 14px 12px;
+    font-size: 14px;
+    color: var(--texto);
+    border-bottom: 1px solid #F8F8F8;
+    vertical-align: middle;
+}
+.cr-table tr { cursor: pointer; transition: background 0.15s; }
+.cr-table tr:hover { background: #fafafa; }
+.cr-table tr.cr-row-ativa { background: #FFF0F0; }
+.cr-right { text-align: right !important; }
+.cr-coin-info { display: flex; align-items: center; gap: 10px; }
+.cr-coin-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+.cr-chip {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
-    color: var(--texto-claro);
-    display: block;
-    margin-bottom: 8px;
 }
-.conv-icon { padding-top: 24px; color: var(--texto-claro); }
-.input-with-select { display: flex; position: relative; }
-.input-with-select input {
-    border-radius: 8px 0 0 8px;
-    border-right: none;
-    flex: 2;
-}
-.select-wrapper { flex: 1; position: relative; }
-.input-with-select select {
-    border-radius: 0 8px 8px 0;
-    width: 100%;
-    appearance: none;
-    padding-right: 30px;
-}
-.select-chevron {
-    position: absolute;
-    right: 12px; top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: var(--texto-claro);
-    font-size: 10px;
-}
-.btn-swap {
-    background: var(--fundo);
-    border: 1px solid #E0E0E0;
-    color: var(--texto);
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.2s;
-    margin-top: 24px;
-}
-.btn-swap:hover { background: #E0E0E0; }
+.cr-chip.up   { background: rgba(26,122,60,0.1); color: #1A7A3C; }
+.cr-chip.down { background: rgba(204,0,0,0.1);  color: #CC0000; }
 
-/* --- Trade (painel lateral) --- */
-.trade-tabs {
-    display: flex;
-    border-bottom: 1px solid #E0E0E0;
+/* --- Ordens recentes --- */
+.cr-ordens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.trade-tab {
+.cr-ordem-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #F5F5F5;
+    font-size: 14px;
+}
+.cr-ordem-item:last-child { border-bottom: none; }
+.cr-ordem-info { display: flex; flex-direction: column; gap: 2px; }
+.cr-ordem-nome { font-weight: 600; color: var(--texto); }
+.cr-ordem-data { font-size: 11px; color: var(--texto-claro); }
+.cr-ordem-val-pos { font-weight: 700; color: #1A7A3C; }
+.cr-ordem-val-neg { font-weight: 700; color: #CC0000; }
+.cr-ordem-vazia { font-size: 14px; color: var(--texto-claro); padding: 8px 0; }
+
+/* --- Painel de Trade --- */
+.cr-trade-card { padding: 0; overflow: hidden; }
+.cr-trade-tabs {
+    display: flex;
+    border-bottom: 1px solid #F0F0F0;
+}
+.cr-trade-tab {
     flex: 1;
     background: none;
     border: none;
-    padding: 12px;
+    padding: 14px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--texto-claro);
     cursor: pointer;
     border-bottom: 3px solid transparent;
+    transition: 0.2s;
 }
-.trade-tab.ativo {
+.cr-trade-tab.cr-tab-ativo {
     color: var(--vermelho);
     border-bottom-color: var(--vermelho);
 }
-.quick-values { display: flex; gap: 8px; margin-top: 12px; }
-.quick-values button { flex: 1; padding: 8px; font-size: 12px; }
-.tax-details {
-    margin-top: 16px;
-    background: var(--fundo);
-    padding: 16px;
-    border-radius: 8px;
+.cr-trade-card .card-cabecalho,
+.cr-trade-card .form-grupo,
+.cr-quick,
+.cr-tax-box,
+.cr-resultado-box,
+.cr-btn-executar { padding-left: 20px; padding-right: 20px; }
+
+.cr-quick {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
 }
-.total-line {
-    border-top: 1px solid #E0E0E0;
+.cr-quick .valor-btn { flex: 1; padding: 8px; font-size: 12px; }
+
+.cr-tax-box {
+    background: #F9F9F9;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin: 0 20px 16px;
+}
+.cr-tax-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: var(--texto-claro);
+}
+.cr-tax-linha:last-child { margin-bottom: 0; }
+.cr-tax-linha strong { color: var(--texto); }
+.cr-tax-total {
+    border-top: 1px solid #E8E8E8;
     padding-top: 8px;
     margin-top: 8px;
 }
-.resultado-box {
-    background: #f9f9f9;
-    border: 1px solid #E0E0E0;
+.cr-neg { color: #CC0000 !important; }
+
+.cr-resultado-box {
+    background: rgba(204,0,0,0.04);
+    border: 1px solid rgba(204,0,0,0.15);
     border-radius: 8px;
-    padding: 16px;
-    margin-top: 16px;
+    padding: 14px 20px;
+    margin: 0 20px 16px;
 }
-.resultado-valor {
-    font-size: 20px;
-    font-weight: bold;
+.cr-resultado-valor {
+    font-size: 22px;
+    font-weight: 700;
     color: var(--texto);
+    margin-top: 6px;
 }
-.resultado-sigla {
-    font-size: 14px;
-    color: var(--texto-claro);
-}
-.btn-touch { min-height: 44px; }
+.cr-resultado-sigla { font-size: 14px; color: var(--texto-claro); font-weight: 400; }
 
-/* --- Vitrine / Tabela de criptos --- */
-.vitrine-card { padding: 24px; }
-.vitrine-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-.search-container,
-.vitrine-search {
-    position: relative;
-    flex: 1;
-    max-width: 300px;
-}
-.search-container i,
-.vitrine-search i {
-    position: absolute;
-    left: 16px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--texto-claro);
-}
-.vitrine-search input { width: 100%; padding-left: 48px; border-radius: 99px; }
-@media (max-width: 600px) {
-    .vitrine-search { max-width: 100%; }
-}
-.category-tabs { display: flex; gap: 8px; overflow-x: auto; }
-.cat-tab {
-    background: transparent;
-    border: 1px solid #E0E0E0;
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--texto-claro);
-    cursor: pointer;
-    white-space: nowrap;
-}
-.cat-tab.ativo,
-.cat-tab:hover {
-    background: var(--vermelho);
-    color: var(--branco);
-    border-color: var(--vermelho);
-}
-.table-responsive { overflow-x: auto; width: 100%; }
-.crypto-table { width: 100%; border-collapse: collapse; }
-.crypto-table th {
-    text-align: left;
-    padding: 12px;
-    color: var(--texto-claro);
-    font-size: 12px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #E0E0E0;
-}
-.crypto-table td {
-    padding: 16px 12px;
-    color: var(--texto);
-    font-size: 14px;
-    border-bottom: 1px solid #E0E0E0;
-    vertical-align: middle;
-}
-.crypto-table tr { transition: background-color 0.2s; cursor: pointer; }
-.crypto-table tr:hover { background-color: rgba(0,0,0,0.04); }
-.crypto-table .sortable { cursor: pointer; }
-.crypto-table .sortable:hover { color: var(--texto); }
-.sort-icon { margin-left: 4px; color: var(--texto-claro); }
-.sortable.active .sort-icon { color: var(--vermelho); }
-.star-btn { background: none; border: none; color: #ccc; font-size: 16px; cursor: pointer; padding: 4px; }
-.star-btn.fav-ativo { color: #FFC107; }
-.crypto-row-info { display: flex; align-items: center; gap: 12px; }
-.crypto-row-icon { width: 32px; height: 32px; border-radius: 50%; object-fit: contain; }
-.chip-var {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-}
-.chip-var.up  { background: rgba(26,122,60,0.1); color: #1A7A3C; }
-.chip-var.down { background: rgba(204,0,0,0.1); color: #CC0000; }
-@media (max-width: 600px) {
-    .th-var, .td-var { display: none; }
-}
-.btn-comprar-micro {
-    background: transparent;
-    border: 1px solid var(--vermelho);
-    color: var(--vermelho);
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.btn-comprar-micro:hover { background: var(--vermelho); color: var(--branco); }
-
-/* Skeleton loader */
-.skeleton-light td {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: cripto-skeleton 1.5s infinite;
-    opacity: 0.5;
-}
-@keyframes cripto-skeleton {
-    0%   { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+.cr-btn-executar {
+    width: calc(100% - 40px);
+    margin: 0 20px 20px;
+    padding: 14px;
+    font-size: 15px;
 }
 
 /* --- Modal de sucesso --- */
-.sucesso-modal {
+.cr-modal {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.5);
     z-index: 1000;
     justify-content: center;
     align-items: center;
 }
-.sucesso-modal.ativo { display: flex; }
-.sucesso-conteudo {
-    background-color: var(--branco);
+.cr-modal.ativo { display: flex; }
+.cr-modal-content {
+    background: var(--branco);
     border-radius: 16px;
-    padding: 40px;
+    padding: 40px 32px;
     text-align: center;
-    max-width: 450px;
+    max-width: 420px;
+    width: 90%;
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
 }
-.sucesso-icone { font-size: 64px; color: #1A7A3C; margin-bottom: 16px; }
-.sucesso-titulo { font-size: 24px; font-weight: 700; color: var(--texto); margin-bottom: 8px; }
-.sucesso-descricao { font-size: 14px; color: var(--texto-claro); margin-bottom: 24px; }
-.sucesso-detalhes {
-    background-color: #f5f5f5;
+.cr-modal-icone { font-size: 56px; color: #1A7A3C; margin-bottom: 12px; }
+.cr-modal-titulo { font-size: 22px; font-weight: 700; color: var(--texto); margin-bottom: 6px; }
+.cr-modal-desc { font-size: 13px; color: var(--texto-claro); margin-bottom: 20px; }
+.cr-modal-detalhes {
+    background: #F5F5F5;
     border-radius: 8px;
     padding: 16px;
-    margin-bottom: 24px;
     text-align: left;
+    margin-bottom: 24px;
 }
-.detalhe-linha { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
-.detalhe-linha:last-child { margin-bottom: 0; }
-.detalhe-label { color: var(--texto-claro); }
-.detalhe-valor { font-weight: 600; color: var(--texto); }
+.cr-modal-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 5px 0;
+    color: var(--texto-claro);
+}
+.cr-modal-linha strong { color: var(--texto); }
+.cr-modal-content .cr-btn-executar {
+    width: 100%;
+    margin: 0;
+}

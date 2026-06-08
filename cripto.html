@@ -7,17 +7,11 @@
     <title>Bradesco | Criptomoedas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!--Cabeçalho-->
     <header class="header">
         <div class="bradesco-logo">
             <img src="/assets/logo_bradesco.png" alt="Bradesco">
@@ -39,235 +33,190 @@
                     <li><a href="transferir.html"><i class="fa-solid fa-right-left"></i> Transferir</a></li>
                     <li><a href="extract.html"><i class="fa-solid fa-file-lines"></i> Extrato</a></li>
                     <li><a href="cartao.html"><i class="fa-solid fa-credit-card"></i> Cartões</a></li>
-                    <li class="ativo"><a href="cripto.html"><i class="fa-solid fa-bitcoin-sign"></i> Criptomoedas</a></li>
                 </ul>
             </nav>
         </aside>
 
         <main class="main-content">
 
-            <div class="risk-banner" role="alert">
-                <i class="fa-solid fa-triangle-exclamation risk-icon"></i>
-                <span>Criptoativos são investimentos de alta volatilidade. Invista com cuidado e de acordo com o seu perfil.</span>
+            <div class="cr-risk-banner" role="alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Criptoativos são investimentos de alta volatilidade. Invista com cuidado.</span>
             </div>
 
-            <div class="saudacao" id="topo-pagina">
-                <h1>Criptomoedas <i class="fa-solid fa-chart-pie"></i></h1>
-                <p>O seu hub avançado para explorar, analisar e negociar ativos digitais.</p>
+            <div class="saudacao">
+                <h1>Criptomoedas <i class="fa-solid fa-bitcoin-sign"></i></h1>
+                <p>Explore, analise e simule negociações de ativos digitais.</p>
+            </div>
+            <br>
+            <!-- Cards de Saldo -->
+            <div class="cr-saldos">
+                <div class="cr-saldo-fiat">
+                    <div class="cr-saldo-topo">
+                        <span>Poder de Compra (BRL)</span>
+                        <button class="cr-btn-eye" onclick="crToggleFiat()" aria-label="Ocultar saldo">
+                            <i class="fa-solid fa-eye-slash" id="cr-eye-fiat"></i>
+                        </button>
+                    </div>
+                    <div class="cr-saldo-valor" id="cr-val-fiat">R$ *****</div>
+                </div>
+
+                <div class="cr-saldo-cripto">
+                    <div class="cr-saldo-topo cr-topo-branco">
+                        <span>Saldo em Custódia (Cripto)</span>
+                        <button class="cr-btn-eye cr-btn-eye-branco" onclick="crToggleCripto()" aria-label="Ocultar saldo cripto">
+                            <i class="fa-solid fa-eye-slash" id="cr-eye-cripto"></i>
+                        </button>
+                    </div>
+                    <div class="cr-saldo-valor cr-saldo-valor-branco" id="cr-val-cripto">R$ *****</div>
+                </div>
+
+                <div class="card cr-pizza-card">
+                    <h3 class="cr-titulo-pizza">Divisão do Portfólio</h3>
+                    <div class="cr-pizza-container">
+                        <canvas id="cr-pizza-chart"></canvas>
+                    </div>
+                </div>
             </div>
 
-            <section id="crypto-assets" class="panel-margin">
+            <!-- Layout principal: gráfico + trade -->
+            <div class="cr-layout">
 
-                <!-- Saldos -->
-                <div class="saldo-portfolio-container">
-                    <div class="card-saldo saldo-fiduciario">
-                        <div class="card-saldo-topo">
-                            <span>Poder de Compra (BRL) <i class="fa-solid fa-wallet tooltip-icon" title="Dinheiro disponível na sua conta corrente para investimentos."></i></span>
-                            <button class="btn-touch btn-ocultar-fiat" onclick="toggleFiatSaldo()" aria-label="Ocultar Poder de Compra">
-                                <i class="fa-solid fa-eye-slash" id="icon-eye-fiat"></i>
-                            </button>
+                <!-- Coluna esquerda: gráfico + tabela -->
+                <div class="cr-col-main">
+
+                    <!-- Gráfico -->
+                    <div class="card">
+                        <div class="card-cabecalho cr-grafico-header">
+                            <div>
+                                <h2 id="cr-grafico-titulo">Análise — Bitcoin (BTC)</h2>
+                                <div class="cr-live-bar">
+                                    <span class="cr-live-preco" id="cr-live-preco">--</span>
+                                    <span class="cr-live-var" id="cr-live-var">--</span>
+                                </div>
+                            </div>
+                            <div class="cr-tf-filters">
+                                <button class="cr-tf-btn" data-tf="7" onclick="crMudarTf(this, 7)">7D</button>
+                                <button class="cr-tf-btn cr-tf-ativo" data-tf="15" onclick="crMudarTf(this, 15)">15D</button>
+                                <button class="cr-tf-btn" data-tf="30" onclick="crMudarTf(this, 30)">1M</button>
+                            </div>
                         </div>
-                        <div class="card-saldo-valor ocultavel-fiat tabular-nums" id="brl-saldo-valor" aria-live="polite">R$ *****</div>
-                    </div>
-
-                    <div class="card-saldo saldo-cripto">
-                        <div class="card-saldo-topo">
-                            <span>Saldo em Custódia (Cripto) <i class="fa-solid fa-vault tooltip-icon" title="Valor equivalente em Reais de todos os criptoativos que você possui."></i></span>
-                            <button class="btn-touch btn-ocultar-cripto" onclick="toggleCriptoSaldo()" aria-label="Ocultar Saldo Cripto">
-                                <i class="fa-solid fa-eye-slash" id="icon-eye-cripto"></i>
-                            </button>
-                        </div>
-                        <div class="card-saldo-valor ocultavel-cripto tabular-nums" id="crypto-saldo-valor" aria-live="polite">R$ *****</div>
-                    </div>
-
-                    <div class="card portfolio-chart-card">
-                        <h3 class="sora-font">Divisão do Portfólio</h3>
-                        <div class="pie-container">
-                            <canvas id="portfolioPieChart"></canvas>
+                        <div class="cr-chart-wrap">
+                            <canvas id="cr-line-chart"></canvas>
                         </div>
                     </div>
+
+                    <!-- Tabela de criptos -->
+                    <div class="card cr-vitrine">
+                        <div class="cr-vitrine-header">
+                            <div class="cr-search-wrap">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" id="cr-search" placeholder="Pesquisar ativo..." class="form-input" oninput="crFiltrar()">
+                            </div>
+                        </div>
+                        <div class="cr-table-wrap">
+                            <table class="cr-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Ativo</th>
+                                        <th class="cr-right">Preço (BRL)</th>
+                                        <th class="cr-right">Var. 24h</th>
+                                        <th class="cr-right">Mkt Cap</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cr-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Ordens simuladas -->
+                    <div class="card">
+                        <div class="card-cabecalho">
+                            <h2>Minhas Ordens Recentes</h2>
+                        </div>
+                        <ul class="cr-ordens" id="cr-ordens">
+                            <li class="cr-ordem-vazia">Nenhuma ordem executada ainda nesta sessão.</li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                <!-- Layout Principal -->
-                <div class="crypto-layout panel-margin">
+                <!-- Coluna direita: trade -->
+                <div class="cr-col-side">
+                    <div class="card cr-trade-card">
+                        <div class="cr-trade-tabs">
+                            <button class="cr-trade-tab cr-tab-ativo" id="cr-tab-buy" onclick="crSetTrade('buy')">Comprar</button>
+                            <button class="cr-trade-tab" id="cr-tab-sell" onclick="crSetTrade('sell')">Vender</button>
+                        </div>
 
-                    <div class="main-column">
-                        <!-- Gráfico -->
-                        <div class="card">
-                            <div class="card-cabecalho grafico-header">
-                                <div class="grafico-titulo-grupo">
-                                    <h2 id="grafico-titulo" class="sora-font">Análise</h2>
-                                    <div class="live-info-bar">
-                                        <span class="live-price tabular-nums" id="live-price">--</span>
-                                        <span class="live-change" id="live-change">--</span>
-                                        <span class="live-clock" id="live-clock"><i class="fa-regular fa-clock"></i> --:--:--</span>
-                                    </div>
-                                </div>
-                                <div class="timeframe-filters">
-                                    <button class="time-btn btn-touch" data-tf="1D" onclick="mudarTempo('1D')">1D</button>
-                                    <button class="time-btn btn-touch ativo" data-tf="15D" onclick="mudarTempo('15D')">15D</button>
-                                    <button class="time-btn btn-touch" data-tf="1M" onclick="mudarTempo('1M')">1M</button>
-                                    <button class="time-btn btn-touch btn-live" data-tf="LIVE" onclick="mudarTempo('LIVE')" aria-label="Ativar Tempo Real">
-                                        <div class="pulse-dot-container"><div class="pulse-dot" id="live-dot"></div></div> Ao Vivo
-                                    </button>
-                                    <button class="time-btn btn-touch btn-reset-zoom" id="btn-reset-zoom" onclick="resetarZoom()" title="Recentralizar Gráfico" style="display:none;">
-                                        <i class="fa-solid fa-compress"></i>
-                                    </button>
-                                </div>
+                        <div class="card-cabecalho" style="margin-top:16px;">
+                            <h2><span id="cr-label-acao">Comprar</span> <span id="cr-label-moeda">Bitcoin</span></h2>
+                        </div>
+
+                        <div class="form-grupo">
+                            <label class="form-label" for="cr-input-valor">Valor em Reais (BRL)</label>
+                            <input type="number" class="form-input" id="cr-input-valor"
+                                placeholder="Digite a partir de R$ 10,00" min="0" step="10" oninput="crCalcular()">
+                            <div class="form-erro" id="cr-erro"></div>
+                        </div>
+
+                        <div class="cr-quick">
+                            <button class="valor-btn" onclick="crQuick(25)">25%</button>
+                            <button class="valor-btn" onclick="crQuick(50)">50%</button>
+                            <button class="valor-btn" onclick="crQuick(100)">Máx</button>
+                        </div>
+
+                        <div class="cr-tax-box">
+                            <div class="cr-tax-linha">
+                                <span>Cotação Atual:</span>
+                                <strong id="cr-cotacao">R$ 0,00</strong>
                             </div>
-                            <div class="chart-container" id="main-chart-container" style="position:relative;width:100%;height:400px;">
-                                <canvas id="cryptoTrendGraph"></canvas>
+                            <div class="cr-tax-linha">
+                                <span>Taxa (0,5%):</span>
+                                <strong class="cr-neg" id="cr-taxa">- R$ 0,00</strong>
+                            </div>
+                            <div class="cr-tax-linha cr-tax-total">
+                                <span>Total líquido:</span>
+                                <strong id="cr-total">R$ 0,00</strong>
                             </div>
                         </div>
 
-                        <!-- Conversor -->
-                        <div class="card">
-                            <div class="card-cabecalho">
-                                <h2 class="sora-font">Calculadora Global de Câmbio</h2>
-                            </div>
-                            <div class="conversor-flex">
-                                <div class="conv-input">
-                                    <label for="conv-amount">Origem (Você tem):</label>
-                                    <div class="input-with-select">
-                                        <input type="number" class="form-input btn-touch tabular-nums" id="conv-amount" value="1" min="0" oninput="converterMoedas()" aria-label="Quantidade de origem">
-                                        <div class="select-wrapper">
-                                            <select class="form-input btn-touch" id="conv-from" onchange="converterMoedas()" aria-label="Moeda de origem"></select>
-                                            <i class="fa-solid fa-chevron-down select-chevron"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="conv-icon">
-                                    <button class="btn-swap btn-touch" onclick="swapCurrencies()" aria-label="Inverter moedas" title="Inverter Moedas">
-                                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                                    </button>
-                                </div>
-                                <div class="conv-input">
-                                    <label for="conv-result">Destino (Equivale a):</label>
-                                    <div class="input-with-select">
-                                        <input type="text" class="form-input btn-touch tabular-nums" id="conv-result" readonly aria-label="Quantidade convertida">
-                                        <div class="select-wrapper">
-                                            <select class="form-input btn-touch" id="conv-to" onchange="converterMoedas()" aria-label="Moeda de destino"></select>
-                                            <i class="fa-solid fa-chevron-down select-chevron"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="cr-resultado-box">
+                            <label class="form-label">Ativo a receber:</label>
+                            <div class="cr-resultado-valor">
+                                <span id="cr-fracao">0.00000000</span>
+                                <span class="cr-resultado-sigla" id="cr-sigla-resultado">BTC</span>
                             </div>
                         </div>
 
-                        <!-- Ordens Recentes -->
-                        <div class="card">
-                            <div class="card-cabecalho">
-                                <h2 class="sora-font">Minhas Ordens Recentes</h2>
-                            </div>
-                            <ul class="transacoes" id="lista-ordens">
-                                <li class="transacao text-muted">Nenhuma ordem executada ainda nesta sessão.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Coluna Trade -->
-                    <div class="side-column">
-                        <div class="card trade-card">
-                            <div class="trade-tabs">
-                                <button class="trade-tab ativo btn-touch" id="tab-buy" onclick="setTradeType('buy')">Comprar</button>
-                                <button class="trade-tab btn-touch" id="tab-sell" onclick="setTradeType('sell')">Vender</button>
-                            </div>
-                            <div class="card-cabecalho mt-3">
-                                <h2 class="sora-font"><span id="label-trade-acao">Comprar</span> <span id="moeda-selecionada-nome" class="safe-html">-</span></h2>
-                            </div>
-                            <div class="form-grupo">
-                                <label class="form-label" for="valor-trade">Valor em Reais (BRL)</label>
-                                <input type="number" class="form-input btn-touch tabular-nums" id="valor-trade" placeholder="Digite a partir de R$ 10,00" min="0" step="10" oninput="calcularTrade()" aria-label="Valor do trade">
-                                <div class="form-erro" id="trade-error" role="alert">O valor mínimo é R$ 10,00.</div>
-                            </div>
-                            <div class="quick-values">
-                                <button class="valor-btn btn-touch" onclick="setQuickValue(25)">25%</button>
-                                <button class="valor-btn btn-touch" onclick="setQuickValue(50)">50%</button>
-                                <button class="valor-btn btn-touch" onclick="setQuickValue(100)">Máx</button>
-                            </div>
-                            <div class="tax-details">
-                                <div class="detalhe-linha">
-                                    <span class="detalhe-label">Cotação Atual:</span>
-                                    <span class="detalhe-valor tabular-nums" id="trade-cotacao">R$ 0,00</span>
-                                </div>
-                                <div class="detalhe-linha">
-                                    <span class="detalhe-label">Taxa Operacional (0.5%):</span>
-                                    <span class="detalhe-valor text-danger tabular-nums" id="trade-taxa">- R$ 0,00</span>
-                                </div>
-                                <div class="detalhe-linha total-line">
-                                    <span class="detalhe-label">Total Fiduciário Líquido:</span>
-                                    <span class="detalhe-valor tabular-nums" id="trade-total-brl">R$ 0,00</span>
-                                </div>
-                            </div>
-                            <div class="form-grupo resultado-box">
-                                <label class="form-label" id="label-resultado">Ativo a receber:</label>
-                                <div class="resultado-valor tabular-nums" aria-live="polite">
-                                    <span id="fracao-recebida">0.00000000</span>
-                                    <span id="moeda-selecionada-sigla" class="resultado-sigla safe-html">BTC</span>
-                                </div>
-                            </div>
-                            <div class="btns-acao mt-4">
-                                <button class="btn btn-primario btn-touch w-100" id="btn-comprar" onclick="confirmarTrade()" disabled>Executar Ordem</button>
-                            </div>
-                        </div>
+                        <button class="btn-primario cr-btn-executar" id="cr-btn-executar"
+                            onclick="crConfirmar()" disabled>Executar Ordem</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Vitrine / Tabela -->
-                <div class="card vitrine-card panel-margin">
-                    <div class="vitrine-header">
-                        <div class="search-container vitrine-search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="search" id="crypto-search" placeholder="Pesquisar ativos..." class="form-input" aria-label="Pesquisar criptomoedas">
-                        </div>
-                        <div class="category-tabs">
-                            <button class="cat-tab ativo" data-cat="Todas" onclick="filtrarCategoria('Todas')">Todas</button>
-                            <button class="cat-tab" data-cat="Favoritos" onclick="filtrarCategoria('Favoritos')"><i class="fa-solid fa-star"></i> Favoritos</button>
-                            <button class="cat-tab" data-cat="Blue Chips" onclick="filtrarCategoria('Blue Chips')">Principais</button>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="crypto-table" id="crypto-table">
-                            <thead>
-                                <tr>
-                                    <th class="td-star"></th>
-                                    <th onclick="ordenarTabela('nome')" class="sortable th-nome" data-col="nome">Ativo <i class="fa-solid fa-sort sort-icon"></i></th>
-                                    <th onclick="ordenarTabela('preco')" class="sortable text-right" data-col="preco">Preço (BRL) <i class="fa-solid fa-sort sort-icon"></i></th>
-                                    <th onclick="ordenarTabela('var')" class="sortable text-right th-var" data-col="var">Variação 24h <i class="fa-solid fa-sort sort-icon"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody id="crypto-tbody">
-                                <tr class="skeleton-light"><td></td><td></td><td></td><td></td></tr>
-                                <tr class="skeleton-light"><td></td><td></td><td></td><td></td></tr>
-                                <tr class="skeleton-light"><td></td><td></td><td></td><td></td></tr>
-                                <tr class="skeleton-light"><td></td><td></td><td></td><td></td></tr>
-                                <tr class="skeleton-light"><td></td><td></td><td></td><td></td></tr>
-                            </tbody>
-                        </table>
-                        <div class="text-center mt-3">
-                            <button class="cat-tab" id="btn-ver-mais" onclick="loadMoreCoins()" style="display:none;">Ver mais ativos</button>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
         </main>
     </div>
 
-    <!-- Modal de Sucesso -->
-    <div class="sucesso-modal" id="modal-sucesso-cripto" role="dialog" aria-modal="true" aria-labelledby="sucesso-titulo">
-        <div class="sucesso-conteudo">
-            <div class="sucesso-icone" id="modal-icon"><i class="fa-solid fa-circle-check"></i></div>
-            <h2 class="sucesso-titulo sora-font" id="sucesso-titulo">Ordem Concluída!</h2>
-            <p class="sucesso-descricao">A transação foi liquidada e o seu portfólio já foi atualizado com sucesso.</p>
-            <div class="sucesso-detalhes">
-                <div class="detalhe-linha"><span class="detalhe-label">Tipo:</span><span class="detalhe-valor safe-html" id="modal-tipo">-</span></div>
-                <div class="detalhe-linha"><span class="detalhe-label">Valor:</span><span class="detalhe-valor tabular-nums" id="modal-valor-pago">-</span></div>
-                <div class="detalhe-linha"><span class="detalhe-label">Ativo:</span><span class="detalhe-valor tabular-nums safe-html" id="modal-valor-recebido">-</span></div>
+    <!-- Modal de sucesso -->
+    <div class="cr-modal" id="cr-modal">
+        <div class="cr-modal-content">
+            <div class="cr-modal-icone" id="cr-modal-icone">
+                <i class="fa-solid fa-circle-check"></i>
             </div>
-            <button class="btn btn-primario btn-touch w-100 mt-4" id="btn-modal-close" onclick="fecharModalCripto()">Ok, entendi</button>
+            <h2 class="cr-modal-titulo">Ordem Concluída!</h2>
+            <p class="cr-modal-desc">Portfólio atualizado com sucesso.</p>
+            <div class="cr-modal-detalhes">
+                <div class="cr-modal-linha"><span>Tipo:</span><strong id="cr-m-tipo">-</strong></div>
+                <div class="cr-modal-linha"><span>Valor pago:</span><strong id="cr-m-valor">-</strong></div>
+                <div class="cr-modal-linha"><span>Ativo recebido:</span><strong id="cr-m-ativo">-</strong></div>
+            </div>
+            <button class="btn-primario cr-btn-executar" onclick="crFecharModal()">Ok, entendi</button>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
