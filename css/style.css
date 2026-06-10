@@ -2038,7 +2038,7 @@ input:checked+.slider:before {
 
         .pix-titulo {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: bold;
             margin-bottom: 4px;
         }
 

@@ -68,19 +68,20 @@
         @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(400px); opacity: 0; } }
         .toast.hide { animation: slideOut 0.3s ease-out; }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="sidebar" id="productsGrid">
-            <div class="product-card active" data-product="porquinho"><div class="product-icon">🐷</div><div class="product-name">Meu Porquinho</div></div>
-            <div class="product-card" data-product="rendafixa"><div class="product-icon">📊</div><div class="product-name">Renda Fixa</div></div>
-            <div class="product-card" data-product="acoes"><div class="product-icon">📈</div><div class="product-name">Ações, FIIs, BDRs</div></div>
-            <div class="product-card" data-product="tesouro"><div class="product-icon">🏦</div><div class="product-name">Tesouro Direto</div></div>
-            <div class="product-card" data-product="fundos"><div class="product-icon">💼</div><div class="product-name">Fundos</div></div>
-            <div class="product-card" data-product="ofertas"><div class="product-icon">🎁</div><div class="product-name">Ofertas Públicas</div></div>
-            <div class="product-card" data-product="coe"><div class="product-icon">📱</div><div class="product-name">COE</div></div>
-            <div class="product-card" data-product="opcoes"><div class="product-icon">📋</div><div class="product-name">Estratégia com Opções</div></div>
-            <div class="product-card" data-product="previdencia"><div class="product-icon">🛡️</div><div class="product-name">Previdência Privada</div></div>
+            <div class="product-card active" data-product="porquinho"><div class="product-icon"><i class="fa-solid fa-piggy-bank"></i></div><div class="product-name">Meu Porquinho</div></div>
+            <div class="product-card" data-product="rendafixa"><div class="product-icon"><i class="fa-solid fa-chart-column"></i></div><div class="product-name">Renda Fixa</div></div>
+            <div class="product-card" data-product="acoes"><div class="product-icon"><i class="fa-solid fa-chart-line"></i></div><div class="product-name">Ações, FIIs, BDRs</div></div>
+            <div class="product-card" data-product="tesouro"><div class="product-icon"><i class="fa-solid fa-building-columns"></i></div><div class="product-name">Tesouro Direto</div></div>
+            <div class="product-card" data-product="fundos"><div class="product-icon"><i class="fa-solid fa-briefcase"></i></div><div class="product-name">Fundos</div></div>
+            <div class="product-card" data-product="ofertas"><div class="product-icon"><i class="fa-solid fa-gift"></i></div><div class="product-name">Ofertas Públicas</div></div>
+            <div class="product-card" data-product="coe"><div class="product-icon"><i class="fa-solid fa-mobile"></i></div><div class="product-name">COE</div></div>
+            <div class="product-card" data-product="opcoes"><div class="product-icon"><i class="fa-solid fa-clipboard"></i></div><div class="product-name">Estratégia com Opções</div></div>
+            <div class="product-card" data-product="previdencia"><div class="product-icon"><i class="fa-solid fa-shield-halved"></i></div><div class="product-name">Previdência Privada</div></div>
         </div>
 
         <div class="main-content">
@@ -92,7 +93,7 @@
             <!-- Meu Porquinho -->
             <div class="content-section active" id="porquinho">
                 <div class="investment-card">
-                    <div class="card-title">💰 Meu Porquinho</div>
+                    <div class="card-title"><i class="fa-solid fa-piggy-bank"></i> Meu Porquinho</div>
                     <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Economize pequenas quantias no seu dia a dia com segurança.</p>
                     <div class="info-grid">
                         <div class="info-box"><div class="info-label">Rendimento</div><div class="info-value">7,50% a.a.</div></div>
@@ -112,7 +113,7 @@
             <!-- Renda Fixa -->
             <div class="content-section" id="rendafixa">
                 <div class="investment-card">
-                    <div class="card-title">📊 Renda Fixa</div>
+                    <div class="card-title"><i class="fa-solid fa-chart-column"></i> Renda Fixa</div>
                     <div class="info-grid">
                         <div class="info-box"><div class="info-label">Rentabilidade Média</div><div class="info-value">12,50% a.a.</div></div>
                         <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-low">Baixo</span></div>
@@ -133,7 +134,7 @@
             <!-- Ações, FIIs, BDRs -->
             <div class="content-section" id="acoes">
                 <div class="investment-card">
-                    <div class="card-title">📈 Ações, FIIs, BDRs</div>
+                    <div class="card-title"><i class="fa-solid fa-chart-line"></i> Ações, FIIs, BDRs</div>
                     <div class="info-box">
                         <div class="info-label">Nível de Risco</div>
                         <span class="risk-badge risk-high">Alto</span>
@@ -155,7 +156,7 @@
             <!-- Tesouro Direto -->
             <div class="content-section" id="tesouro">
                 <div class="investment-card">
-                    <div class="card-title">🏦 Tesouro Direto</div>
+                    <div class="card-title"><i class="fa-solid fa-building-columns"></i> Tesouro Direto</div>
                     <div class="info-grid">
                         <div class="info-box"><div class="info-label">Rentabilidade</div><div class="info-value">10,50% a.a.</div></div>
                         <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-low">Muito Baixo</span></div>
@@ -176,7 +177,7 @@
             <!-- Fundos -->
             <div class="content-section" id="fundos">
                 <div class="investment-card">
-                    <div class="card-title">💼 Fundos de Investimento</div>
+                    <div class="card-title"><i class="fa-solid fa-briefcase"></i> Fundos de Investimento</div>
                     <div class="info-grid">
                         <div class="info-box"><div class="info-label">Rentabilidade Média</div><div class="info-value">15,20% a.a.</div></div>
                         <div class="info-box"><div class="info-label">Taxa Admin.</div><div class="info-value">0,50% a.a.</div></div>
@@ -198,7 +199,7 @@
             <!-- Ofertas Públicas -->
             <div class="content-section" id="ofertas">
                 <div class="investment-card">
-                    <div class="card-title">🎁 Ofertas Públicas</div>
+                    <div class="card-title"><i class="fa-solid fa-gift"></i> Ofertas Públicas</div>
                     <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Invista em IPOs e ofertas exclusivas no mercado.</p>
                     <div class="ticker-list">
                         <div class="ticker-item"><div class="ticker-name">IPO Tech Empresa A</div><div><div style="color: #4caf50; font-weight: 600;">Abertura em 15/06</div></div></div>
@@ -215,7 +216,7 @@
             <!-- COE -->
             <div class="content-section" id="coe">
                 <div class="investment-card">
-                    <div class="card-title">📱 COE - Certificado de Operações Estruturadas</div>
+                    <div class="card-title"><i class="fa-solid fa-mobile"></i> COE - Certificado de Operações Estruturadas</div>
                     <div class="info-grid">
                         <div class="info-box"><div class="info-label">Potencial de Ganho</div><div class="info-value">+150%</div></div>
                         <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-high">Alto</span></div>
@@ -234,7 +235,7 @@
             <!-- Estratégia com Opções -->
             <div class="content-section" id="opcoes">
                 <div class="investment-card">
-                    <div class="card-title">📋 Estratégia com Opções</div>
+                    <div class="card-title"><i class="fa-solid fa-clipboard"></i> Estratégia com Opções</div>
                     <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Estratégias avançadas de proteção e rentabilidade.</p>
                     <div class="info-grid">
                         <div class="info-box"><div class="info-label">Nível Mínimo</div><div class="info-value">Avançado</div></div>
@@ -251,7 +252,7 @@
             <!-- Previdência Privada -->
             <div class="content-section" id="previdencia">
                 <div class="investment-card">
-                    <div class="card-title">🛡️ Previdência Privada</div>
+                    <div class="card-title"><i class="fa-solid fa-shield-halved"></i> Previdência Privada</div>
                     <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Planeje seu futuro com segurança e rentabilidade.</p>
                     <div class="info-grid">
                         <div class="info-box"><div class="info-label">Taxa Admin.</div><div class="info-value">0,75%</div></div>
