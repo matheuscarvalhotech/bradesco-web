@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco Investimentos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; }
+        .container { width: 100%; margin: 0; background: white; display: flex; min-height: 100vh; }
+        .sidebar { width: 200px; background: white; border-right: 2px solid #ddd; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; }
+        .header { padding: 20px; border-bottom: 1px solid #eee; }
+        .header h1 { font-size: 24px; font-weight: 600; }
+        .products-grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 20px; }
+        .product-card { padding: 16px 12px; background: #f9f9f9; border-left: 3px solid #ddd; border-radius: 0; text-align: left; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .product-card:hover { background: #e8e8e8; transform: translateX(4px); }
+        .product-card.active { background: #c41c3b; color: white; border-left-color: #c41c3b; }
+        .product-icon { font-size: 28px; margin-bottom: 8px; }
+        .product-name { font-size: 11px; font-weight: 600; text-align: center; }
+        .main-content { flex: 1; display: flex; flex-direction: column; }
+        .content { padding: 30px; flex: 1; overflow-y: auto; }
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .investment-card { background: #f9f9f9; border: 1px solid #eee; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+        .card-title { font-size: 18px; font-weight: 600; color: #c41c3b; margin-bottom: 12px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        .info-box { background: white; padding: 12px; border-radius: 8px; border-left: 3px solid #c41c3b; }
+        .info-label { font-size: 12px; color: #666; margin-bottom: 4px; }
+        .info-value { font-size: 16px; font-weight: 600; color: #333; }
+        .input-group { margin-bottom: 16px; }
+        .input-label { font-size: 12px; color: #666; margin-bottom: 6px; display: block; }
+        .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+        .input-field:focus { outline: none; border-color: #c41c3b; box-shadow: 0 0 0 3px rgba(196,28,59,0.1); }
+        .ticker-list { background: white; border: 1px solid #eee; border-radius: 8px; padding: 0; }
+        .ticker-item { padding: 12px 16px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; font-size: 14px; }
+        .ticker-item:last-child { border-bottom: none; }
+        .ticker-name { font-weight: 600; }
+        .ticker-price { color: #c41c3b; font-weight: 600; }
+        .ticker-change.up { color: #4caf50; }
+        .ticker-change.down { color: #f44336; }
+        .btn { padding: 12px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: #c41c3b; color: white; }
+        .btn-primary:hover { background: #a01630; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(196,28,59,0.3); }
+        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .risk-badge { display: inline-block; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+        .risk-low { background: #c8e6c9; color: #2e7d32; }
+        .risk-medium { background: #ffe0b2; color: #e65100; }
+        .risk-high { background: #ffcdd2; color: #c62828; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { font-size: 22px; color: #c41c3b; }
+        .modal-close { background: none; border: none; font-size: 24px; cursor: pointer; color: #666; }
+        .projection-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .projection-table th { background: #c41c3b; color: white; padding: 12px; text-align: left; font-size: 13px; }
+        .projection-table td { padding: 12px; border-bottom: 1px solid #eee; font-size: 13px; }
+        .projection-table tr:hover { background: #f5f5f5; }
+        .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .btn-secondary { background: #ddd; color: #333; }
+        .btn-secondary:hover { background: #ccc; }
+        .toast { position: fixed; bottom: 20px; right: 20px; background: #4caf50; color: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: none; z-index: 2000; animation: slideIn 0.3s ease-out; }
+        .toast.show { display: block; }
+        .toast.success { background: #4caf50; }
+        .toast.error { background: #f44336; }
+        @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(400px); opacity: 0; } }
+        .toast.hide { animation: slideOut 0.3s ease-out; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="productsGrid">
+            <div class="product-card active" data-product="porquinho"><div class="product-icon">🐷</div><div class="product-name">Meu Porquinho</div></div>
+            <div class="product-card" data-product="rendafixa"><div class="product-icon">📊</div><div class="product-name">Renda Fixa</div></div>
+            <div class="product-card" data-product="acoes"><div class="product-icon">📈</div><div class="product-name">Ações, FIIs, BDRs</div></div>
+            <div class="product-card" data-product="tesouro"><div class="product-icon">🏦</div><div class="product-name">Tesouro Direto</div></div>
+            <div class="product-card" data-product="fundos"><div class="product-icon">💼</div><div class="product-name">Fundos</div></div>
+            <div class="product-card" data-product="ofertas"><div class="product-icon">🎁</div><div class="product-name">Ofertas Públicas</div></div>
+            <div class="product-card" data-product="coe"><div class="product-icon">📱</div><div class="product-name">COE</div></div>
+            <div class="product-card" data-product="opcoes"><div class="product-icon">📋</div><div class="product-name">Estratégia com Opções</div></div>
+            <div class="product-card" data-product="previdencia"><div class="product-icon">🛡️</div><div class="product-name">Previdência Privada</div></div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Investimentos Bradesco</h1>
+            </div>
+
+            <div class="content">
+            <!-- Meu Porquinho -->
+            <div class="content-section active" id="porquinho">
+                <div class="investment-card">
+                    <div class="card-title">💰 Meu Porquinho</div>
+                    <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Economize pequenas quantias no seu dia a dia com segurança.</p>
+                    <div class="info-grid">
+                        <div class="info-box"><div class="info-label">Rendimento</div><div class="info-value">7,50% a.a.</div></div>
+                        <div class="info-box"><div class="info-label">Mínimo</div><div class="info-value">R$ 1,00</div></div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Quanto você quer guardar?</label>
+                        <input type="number" class="input-field" placeholder="R$ 0,00" id="porquinhoAmount" min="1" step="0.01">
+                    </div>
+                    <div class="info-box" style="border-left-color: #4caf50;">
+                        <div class="info-label">Em 12 meses você terá:</div>
+                        <div class="info-value" id="porquinhoResult">R$ 0,00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Renda Fixa -->
+            <div class="content-section" id="rendafixa">
+                <div class="investment-card">
+                    <div class="card-title">📊 Renda Fixa</div>
+                    <div class="info-grid">
+                        <div class="info-box"><div class="info-label">Rentabilidade Média</div><div class="info-value">12,50% a.a.</div></div>
+                        <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-low">Baixo</span></div>
+                    </div>
+                    <div class="ticker-list">
+                        <div class="ticker-item"><div class="ticker-name">CDB Banco X</div><div><div class="ticker-price">12,20%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Debêntures Y</div><div><div class="ticker-price">13,40%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">LCI/LCA</div><div><div class="ticker-price">11,80%</div></div></div>
+                    </div>
+                    <div class="input-group" style="margin-top: 16px;">
+                        <label class="input-label">Valor a investir</label>
+                        <input type="number" class="input-field" placeholder="R$ 0,00" id="rendafixaAmount" min="1000" step="0.01">
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="mostrarProjecao('rendafixa', document.getElementById('rendafixaAmount').value, 'Renda Fixa', 0.1250)">Investir Agora</button>
+                </div>
+            </div>
+
+            <!-- Ações, FIIs, BDRs -->
+            <div class="content-section" id="acoes">
+                <div class="investment-card">
+                    <div class="card-title">📈 Ações, FIIs, BDRs</div>
+                    <div class="info-box">
+                        <div class="info-label">Nível de Risco</div>
+                        <span class="risk-badge risk-high">Alto</span>
+                    </div>
+                    <div class="ticker-list" style="margin-top: 16px;">
+                        <div class="ticker-item"><div class="ticker-name">BBAS3 - Banco do Brasil</div><div><div class="ticker-price">R$ 28,45</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">PETR4 - Petrobras</div><div><div class="ticker-price">R$ 32,10</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">VALE3 - Vale</div><div><div class="ticker-price">R$ 65,80</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">KNSC11 - Kinea Real Estate</div><div><div class="ticker-price">R$ 102,50</div></div></div>
+                    </div>
+                    <div class="input-group" style="margin-top: 16px;">
+                        <label class="input-label">Valor a investir</label>
+                        <input type="number" class="input-field" placeholder="R$ 0,00" id="acoesAmount" min="100" step="0.01">
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="mostrarProjecao('acoes', document.getElementById('acoesAmount').value, 'Ações/FIIs/BDRs', 0.18)">Comprar Agora</button>
+                </div>
+            </div>
+
+            <!-- Tesouro Direto -->
+            <div class="content-section" id="tesouro">
+                <div class="investment-card">
+                    <div class="card-title">🏦 Tesouro Direto</div>
+                    <div class="info-grid">
+                        <div class="info-box"><div class="info-label">Rentabilidade</div><div class="info-value">10,50% a.a.</div></div>
+                        <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-low">Muito Baixo</span></div>
+                    </div>
+                    <div class="ticker-list">
+                        <div class="ticker-item"><div class="ticker-name">Tesouro Selic 2025</div><div><div class="ticker-price">R$ 9.876</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Tesouro Prefixado 2029</div><div><div class="ticker-price">R$ 8.543</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Tesouro IPCA+ 2035</div><div><div class="ticker-price">R$ 6.234</div></div></div>
+                    </div>
+                    <div class="input-group" style="margin-top: 16px;">
+                        <label class="input-label">Valor mínimo: R$ 7,13</label>
+                        <input type="number" class="input-field" placeholder="R$ 7,13" id="tesouroAmount" min="7.13" step="0.01">
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="mostrarProjecao('tesouro', document.getElementById('tesouroAmount').value, 'Tesouro Direto', 0.1050)">Investir no Tesouro</button>
+                </div>
+            </div>
+
+            <!-- Fundos -->
+            <div class="content-section" id="fundos">
+                <div class="investment-card">
+                    <div class="card-title">💼 Fundos de Investimento</div>
+                    <div class="info-grid">
+                        <div class="info-box"><div class="info-label">Rentabilidade Média</div><div class="info-value">15,20% a.a.</div></div>
+                        <div class="info-box"><div class="info-label">Taxa Admin.</div><div class="info-value">0,50% a.a.</div></div>
+                    </div>
+                    <div class="ticker-list">
+                        <div class="ticker-item"><div class="ticker-name">Fundo Multimercado</div><div><div class="ticker-price">+12,8%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Fundo Ações</div><div><div class="ticker-price">+18,5%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Fundo Renda Fixa</div><div><div class="ticker-price">+9,2%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Fundo Cambial</div><div><div class="ticker-price">+5,6%</div></div></div>
+                    </div>
+                    <div class="input-group" style="margin-top: 16px;">
+                        <label class="input-label">Valor a aplicar</label>
+                        <input type="number" class="input-field" placeholder="R$ 0,00" id="fundosAmount" min="100" step="0.01">
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="mostrarProjecao('fundos', document.getElementById('fundosAmount').value, 'Fundos', 0.1520)">Aplicar em Fundos</button>
+                </div>
+            </div>
+
+            <!-- Ofertas Públicas -->
+            <div class="content-section" id="ofertas">
+                <div class="investment-card">
+                    <div class="card-title">🎁 Ofertas Públicas</div>
+                    <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Invista em IPOs e ofertas exclusivas no mercado.</p>
+                    <div class="ticker-list">
+                        <div class="ticker-item"><div class="ticker-name">IPO Tech Empresa A</div><div><div style="color: #4caf50; font-weight: 600;">Abertura em 15/06</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Follow-on Tech Corp</div><div><div style="color: #ff9800; font-weight: 600;">Inscrição Aberta</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Debênture Empresa B</div><div><div style="color: #4caf50; font-weight: 600;">R$ 1.500,00</div></div></div>
+                    </div>
+                    <div class="info-box" style="margin-top: 16px; border-left-color: #ff9800;">
+                        <div class="info-label">Oportunidades disponíveis</div>
+                        <div class="info-value" style="color: #ff9800;">3 ofertas ativas</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COE -->
+            <div class="content-section" id="coe">
+                <div class="investment-card">
+                    <div class="card-title">📱 COE - Certificado de Operações Estruturadas</div>
+                    <div class="info-grid">
+                        <div class="info-box"><div class="info-label">Potencial de Ganho</div><div class="info-value">+150%</div></div>
+                        <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-high">Alto</span></div>
+                    </div>
+                    <div class="ticker-list">
+                        <div class="ticker-item"><div class="ticker-name">COE Ibovespa</div><div><div class="ticker-price">Proteção 90%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">COE Dólar</div><div><div class="ticker-price">Alavancado 2x</div></div></div>
+                    </div>
+                    <div class="info-box" style="margin-top: 16px; border-left-color: #c41c3b;">
+                        <div class="info-label">Prazo mínimo</div>
+                        <div class="info-value">1 ano</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estratégia com Opções -->
+            <div class="content-section" id="opcoes">
+                <div class="investment-card">
+                    <div class="card-title">📋 Estratégia com Opções</div>
+                    <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Estratégias avançadas de proteção e rentabilidade.</p>
+                    <div class="info-grid">
+                        <div class="info-box"><div class="info-label">Nível Mínimo</div><div class="info-value">Avançado</div></div>
+                        <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-high">Muito Alto</span></div>
+                    </div>
+                    <div class="ticker-list" style="margin-top: 16px;">
+                        <div class="ticker-item"><div class="ticker-name">Call PETR4</div><div><div class="ticker-price">R$ 2,50</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Put VALE3</div><div><div class="ticker-price">R$ 1,85</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">Butterfly BBAS3</div><div><div class="ticker-price">R$ 3,20</div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Previdência Privada -->
+            <div class="content-section" id="previdencia">
+                <div class="investment-card">
+                    <div class="card-title">🛡️ Previdência Privada</div>
+                    <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Planeje seu futuro com segurança e rentabilidade.</p>
+                    <div class="info-grid">
+                        <div class="info-box"><div class="info-label">Taxa Admin.</div><div class="info-value">0,75%</div></div>
+                        <div class="info-box"><div class="info-label">Rentabilidade</div><div class="info-value">11,50% a.a.</div></div>
+                    </div>
+                    <div class="ticker-list">
+                        <div class="ticker-item"><div class="ticker-name">PGBL - Plano A (Ações)</div><div><div class="ticker-price">+18,2%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">VGBL - Plano B (Misto)</div><div><div class="ticker-price">+12,5%</div></div></div>
+                        <div class="ticker-item"><div class="ticker-name">VGBL - Plano C (RF)</div><div><div class="ticker-price">+8,9%</div></div></div>
+                    </div>
+                    <div class="input-group" style="margin-top: 16px;">
+                        <label class="input-label">Contribuição mensal</label>
+                        <input type="number" class="input-field" placeholder="R$ 0,00" id="previdenciaAmount" min="100" step="0.01">
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="mostrarProjecao('previdencia', document.getElementById('previdenciaAmount').value, 'Previdência Privada', 0.1150)">Contratar Plano</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Projeção -->
+    <div id="modalProjecao" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Projeção de Ganhos</h2>
+                <button class="modal-close" onclick="fecharModal()">✕</button>
+            </div>
+            <div id="modalInfo"></div>
+            <table class="projection-table">
+                <thead>
+                    <tr>
+                        <th>Mês</th>
+                        <th>Valor Investido</th>
+                        <th>Ganho do Mês</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+                <button class="btn btn-primary" id="btnConfirmarInvest" onclick="confirmarInvestimento()">Confirmar Investimento</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const productCards = document.querySelectorAll('.product-card');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        productCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const product = this.getAttribute('data-product');
+                
+                productCards.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                
+                contentSections.forEach(section => section.classList.remove('active'));
+                document.getElementById(product).classList.add('active');
+            });
+        });
+
+        // Cálculo Porquinho
+        document.getElementById('porquinhoAmount').addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            const earning = amount * 0.075;
+            const total = amount + earning;
+            document.getElementById('porquinhoResult').textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total);
+        });
+
+        // Função de projeção de ganhos
+        function mostrarProjecao(produto, valor, nome, taxaAnual) {
+            const amount = parseFloat(valor) || 0;
+            
+            if (amount <= 0) {
+                alert('Digite um valor válido para investir!');
+                return;
+            }
+
+            const modal = document.getElementById('modalProjecao');
+            const title = document.getElementById('modalTitle');
+            const info = document.getElementById('modalInfo');
+            const tbody = document.getElementById('tableBody');
+
+            title.textContent = `Projeção - ${nome}`;
+            
+            const taxaMensal = taxaAnual / 12;
+            let rows = '';
+            let saldoTotal = amount;
+
+            for (let mes = 1; mes <= 12; mes++) {
+                const ganhoMes = saldoTotal * taxaMensal;
+                saldoTotal += ganhoMes;
+
+                rows += `
+                    <tr>
+                        <td>Mês ${mes}</td>
+                        <td>${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(amount)}</td>
+                        <td style="color: #4caf50; font-weight: 600;">${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(ganhoMes)}</td>
+                        <td style="font-weight: 600;">${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(saldoTotal)}</td>
+                    </tr>
+                `;
+            }
+
+            info.innerHTML = `
+                <div class="info-grid">
+                    <div class="info-box">
+                        <div class="info-label">Valor Investido</div>
+                        <div class="info-value">${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(amount)}</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-label">Taxa Annual</div>
+                        <div class="info-value">${(taxaAnual * 100).toFixed(2)}%</div>
+                    </div>
+                </div>
+            `;
+
+            tbody.innerHTML = rows;
+            modal.classList.add('active');
+        }
+
+        function fecharModal() {
+            const modal = document.getElementById('modalProjecao');
+            modal.classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalProjecao');
+            if (event.target === modal) {
+                fecharModal();
+            }
+        }
+
+        function confirmarInvestimento() {
+            const titulo = document.getElementById('modalTitle').textContent;
+            const nomeInvestimento = titulo.replace('Projeção - ', '');
+            
+            fecharModal();
+            
+            mostrarToast(`✓ Investimento em ${nomeInvestimento} confirmado com sucesso! Seu dinheiro já está rendendo.`, 'success');
+        }
+
+        function mostrarToast(mensagem, tipo = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = mensagem;
+            toast.className = `toast ${tipo} show`;
+            
+            setTimeout(() => {
+                toast.classList.add('hide');
+                setTimeout(() => {
+                    toast.classList.remove('show', 'hide');
+                }, 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
