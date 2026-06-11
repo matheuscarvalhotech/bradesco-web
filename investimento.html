@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <header class="header">
         <div class="bradesco-logo">
-            <img src="/assets/logo_bradesco.png" alt="Bradesco">
+            <img src="assets/logo_bradesco.png" alt="Bradesco">
         </div>
         <div class="header-usuario">
             <span>Olá, <strong>Matheus Carvalho</strong></span>
@@ -20,77 +22,147 @@
     </header>
 
     <div class="container-principal">
-        
+
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a href="index.html"><i class="fa-solid fa-house"></i>  Início</a></li>
-                    <li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i>  Dashboard</a></li>
-                    <li><a href="pix.html"><i class="fa-brands fa-pix"> </i>  PIX</a></li>
-                    <li><a href="transferir.html"><i class="fa-solid fa-right-left"> </i>  Transferir</a></li>
-                    <li><a href="extract.html"><i class="fa-solid fa-file-lines"> </i>  Extrato</a></li>
-                    <li><a href="cartao.html"><i class="fa-solid fa-credit-card"> </i>  Cartões</a></li>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="pix.html"><i class="fa-brands fa-pix"></i> PIX</a></li>
+                    <li><a href="transferir.html"><i class="fa-solid fa-right-left"></i> Transferir</a></li>
+                    <li><a href="extract.html"><i class="fa-solid fa-file-lines"></i> Extrato</a></li>
+                    <li><a href="cartao.html"><i class="fa-solid fa-credit-card"></i> Cartões</a></li>
                 </ul>
             </nav>
         </aside>
 
         <div class="main-content-invest">
-            
+
+            <!-- Saudação padrão -->
+            <div class="saudacao">
+                <h1>Investimentos <i class="fa-solid fa-chart-pie"></i></h1>
+                <p id="data-hoje"></p>
+            </div>
+
             <div class="invest-menu-wrapper">
                 <div class="invest-tabs">
-                    <button class="tab-btn active" data-product="porquinho"><i class="fa-solid fa-piggy-bank"></i> Meu Porquinho</button>
-                    <button class="tab-btn" data-product="rendafixa"><i class="fa-solid fa-chart-column"></i> Renda Fixa</button>
-                    <button class="tab-btn" data-product="acoes"><i class="fa-solid fa-chart-line"></i> Ações, FIIs, BDRs</button>
-                    <button class="tab-btn" data-product="tesouro"><i class="fa-solid fa-building-columns"></i> Tesouro Direto</button>
+                    <button class="tab-btn active" data-product="porquinho"><i class="fa-solid fa-piggy-bank"></i> Meu
+                        Porquinho</button>
+                    <button class="tab-btn" data-product="rendafixa"><i class="fa-solid fa-chart-column"></i> Renda
+                        Fixa</button>
+                    <button class="tab-btn" data-product="acoes"><i class="fa-solid fa-chart-line"></i> Ações, FIIs,
+                        BDRs</button>
+                    <button class="tab-btn" data-product="tesouro"><i class="fa-solid fa-building-columns"></i> Tesouro
+                        Direto</button>
                     <button class="tab-btn" data-product="fundos"><i class="fa-solid fa-briefcase"></i> Fundos</button>
-                    <button class="tab-btn" data-product="ofertas"><i class="fa-solid fa-gift"></i> Ofertas Públicas</button>
+                    <button class="tab-btn" data-product="ofertas"><i class="fa-solid fa-gift"></i> Ofertas
+                        Públicas</button>
                     <button class="tab-btn" data-product="coe"><i class="fa-solid fa-mobile"></i> COE</button>
                     <button class="tab-btn" data-product="opcoes"><i class="fa-solid fa-clipboard"></i> Opções</button>
-                    <button class="tab-btn" data-product="previdencia"><i class="fa-solid fa-shield-halved"></i> Previdência</button>
+                    <button class="tab-btn" data-product="previdencia"><i class="fa-solid fa-shield-halved"></i>
+                        Previdência</button>
                 </div>
             </div>
 
             <main class="content-invest-body">
 
+                <!-- MEU PORQUINHO -->
                 <div class="content-section active" id="porquinho">
+
+                    <!-- Card: Guardar -->
                     <div class="investment-card">
-                        <div class="card-title"><i class="fa-solid fa-piggy-bank"></i> Meu Porquinho</div>
-                        <p class="card-description">Economize pequenas quantias no seu dia a dia com segurança e liquidez imediata.</p>
+                        <div class="card-title"><i class="fa-solid fa-piggy-bank"></i> Guardar dinheiro</div>
+                        <p class="card-description">Economize pequenas quantias no seu dia a dia com segurança e
+                            liquidez imediata.</p>
                         <div class="info-grid">
-                            <div class="info-box"><div class="info-label">Rendimento</div><div class="info-value">7,50% a.a.</div></div>
-                            <div class="info-box"><div class="info-label">Mínimo</div><div class="info-value">R$ 1,00</div></div>
+                            <div class="info-box">
+                                <div class="info-label">Rendimento</div>
+                                <div class="info-value">7,50% a.a.</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">Mínimo</div>
+                                <div class="info-value">R$ 1,00</div>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label class="input-label">Quanto você quer guardar?</label>
-                            <input type="number" class="input-field" placeholder="R$ 0,00" id="porquinhoAmount" min="1" step="0.01">
+                            <input type="number" class="input-field" placeholder="R$ 0,00" id="porquinhoAmount" min="1"
+                                step="0.01" oninput="calcularPorquinho()">
                         </div>
                         <div class="info-box success-border">
                             <div class="info-label">Em 12 meses você terá aproximadamente:</div>
                             <div class="info-value" id="porquinhoResult">R$ 0,00</div>
                         </div>
+                        <button class="btn btn-primary" style="margin-top: 16px; width: 100%;"
+                            onclick="guardarPorquinho()">
+                            <i class="fa-solid fa-piggy-bank"></i> Guardar agora
+                        </button>
+                    </div>
+
+                    <!-- Card: Saldo guardado + Resgatar -->
+                    <div class="investment-card" style="margin-top: 24px;">
+                        <div class="card-title"><i class="fa-solid fa-vault"></i> Meu saldo guardado</div>
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <div class="info-label">Total guardado</div>
+                                <div class="info-value" id="porquinhoSaldo">R$ 1.250,00</div>
+                            </div>
+                            <div class="info-box success-border">
+                                <div class="info-label">Rendimento acumulado</div>
+                                <div class="info-value" id="porquinhoRendimento">R$ 93,75</div>
+                            </div>
+                        </div>
+                        <div class="input-group" style="margin-top: 16px;">
+                            <label class="input-label">Quanto deseja resgatar?</label>
+                            <input type="number" class="input-field" placeholder="R$ 0,00" id="porquinhoResgate" min="1"
+                                step="0.01">
+                        </div>
+                        <button class="btn btn-primary" style="margin-top: 8px; width: 100%; background-color: #1A7A3C;"
+                            onclick="resgatarPorquinho()">
+                            <i class="fa-solid fa-arrow-down"></i> Resgatar valor
+                        </button>
                     </div>
                 </div>
 
+                <!-- RENDA FIXA -->
                 <div class="content-section" id="rendafixa">
                     <div class="investment-card">
                         <div class="card-title"><i class="fa-solid fa-chart-column"></i> Renda Fixa</div>
                         <div class="info-grid">
-                            <div class="info-box"><div class="info-label">Rentabilidade Média</div><div class="info-value">12,50% a.a.</div></div>
-                            <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-low">Baixo</span></div>
+                            <div class="info-box">
+                                <div class="info-label">Rentabilidade Média</div>
+                                <div class="info-value">12,50% a.a.</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">Risco</div><span class="risk-badge risk-low">Baixo</span>
+                            </div>
                         </div>
                         <div class="ticker-list">
-                            <div class="ticker-item"><div class="ticker-name">CDB Banco X</div><div class="ticker-price">12,20%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Debêntures Y</div><div class="ticker-price">13,40%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">LCI/LCA</div><div class="ticker-price">11,80%</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">CDB Banco X</div>
+                                <div class="ticker-price">12,20%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Debêntures Y</div>
+                                <div class="ticker-price">13,40%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">LCI/LCA</div>
+                                <div class="ticker-price">11,80%</div>
+                            </div>
                         </div>
                         <div class="input-group" style="margin-top: 16px;">
                             <label class="input-label">Valor a investir</label>
-                            <input type="number" class="input-field" placeholder="R$ 0,00" id="rendafixaAmount" min="1000" step="0.01">
+                            <input type="number" class="input-field" placeholder="R$ 0,00" id="rendafixaAmount"
+                                min="1000" step="0.01">
                         </div>
-                        <button class="btn btn-primary" onclick="mostrarProjecao('rendafixa', document.getElementById('rendafixaAmount').value, 'Renda Fixa', 0.1250)">Investir Agora</button>
+                        <button class="btn btn-primary"
+                            onclick="mostrarProjecao('rendafixa', document.getElementById('rendafixaAmount').value, 'Renda Fixa', 0.1250)">Investir
+                            Agora</button>
                     </div>
                 </div>
 
+                <!-- AÇÕES -->
                 <div class="content-section" id="acoes">
                     <div class="investment-card">
                         <div class="card-title"><i class="fa-solid fa-chart-line"></i> Ações, FIIs, BDRs</div>
@@ -99,68 +171,133 @@
                             <span class="risk-badge risk-high">Alto</span>
                         </div>
                         <div class="ticker-list">
-                            <div class="ticker-item"><div class="ticker-name">BBAS3 - Banco do Brasil</div><div class="ticker-price">R$ 28,45</div></div>
-                            <div class="ticker-item"><div class="ticker-name">PETR4 - Petrobras</div><div class="ticker-price">R$ 32,10</div></div>
-                            <div class="ticker-item"><div class="ticker-name">VALE3 - Vale</div><div class="ticker-price">R$ 65,80</div></div>
-                            <div class="ticker-item"><div class="ticker-name">KNSC11 - Kinea Real Estate</div><div class="ticker-price">R$ 102,50</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">BBAS3 - Banco do Brasil</div>
+                                <div class="ticker-price">R$ 28,45</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">PETR4 - Petrobras</div>
+                                <div class="ticker-price">R$ 32,10</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">VALE3 - Vale</div>
+                                <div class="ticker-price">R$ 65,80</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">KNSC11 - Kinea Real Estate</div>
+                                <div class="ticker-price">R$ 102,50</div>
+                            </div>
                         </div>
                         <div class="input-group" style="margin-top: 16px;">
                             <label class="input-label">Valor a investir</label>
-                            <input type="number" class="input-field" placeholder="R$ 0,00" id="acoesAmount" min="100" step="0.01">
+                            <input type="number" class="input-field" placeholder="R$ 0,00" id="acoesAmount" min="100"
+                                step="0.01">
                         </div>
-                        <button class="btn btn-primary" onclick="mostrarProjecao('acoes', document.getElementById('acoesAmount').value, 'Ações/FIIs/BDRs', 0.18)">Comprar Agora</button>
+                        <button class="btn btn-primary"
+                            onclick="mostrarProjecao('acoes', document.getElementById('acoesAmount').value, 'Ações/FIIs/BDRs', 0.18)">Comprar
+                            Agora</button>
                     </div>
                 </div>
 
+                <!-- TESOURO -->
                 <div class="content-section" id="tesouro">
                     <div class="investment-card">
                         <div class="card-title"><i class="fa-solid fa-building-columns"></i> Tesouro Direto</div>
                         <div class="info-grid">
-                            <div class="info-box"><div class="info-label">Rentabilidade</div><div class="info-value">10,50% a.a.</div></div>
-                            <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-low">Muito Baixo</span></div>
+                            <div class="info-box">
+                                <div class="info-label">Rentabilidade</div>
+                                <div class="info-value">10,50% a.a.</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">Risco</div><span class="risk-badge risk-low">Muito Baixo</span>
+                            </div>
                         </div>
                         <div class="ticker-list">
-                            <div class="ticker-item"><div class="ticker-name">Tesouro Selic 2025</div><div class="ticker-price">R$ 9.876</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Tesouro Prefixado 2029</div><div class="ticker-price">R$ 8.543</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Tesouro IPCA+ 2035</div><div class="ticker-price">R$ 6.234</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Tesouro Selic 2025</div>
+                                <div class="ticker-price">R$ 9.876</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Tesouro Prefixado 2029</div>
+                                <div class="ticker-price">R$ 8.543</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Tesouro IPCA+ 2035</div>
+                                <div class="ticker-price">R$ 6.234</div>
+                            </div>
                         </div>
                         <div class="input-group" style="margin-top: 16px;">
                             <label class="input-label">Valor mínimo: R$ 7,13</label>
-                            <input type="number" class="input-field" placeholder="R$ 7,13" id="tesouroAmount" min="7.13" step="0.01">
+                            <input type="number" class="input-field" placeholder="R$ 7,13" id="tesouroAmount" min="7.13"
+                                step="0.01">
                         </div>
-                        <button class="btn btn-primary" onclick="mostrarProjecao('tesouro', document.getElementById('tesouroAmount').value, 'Tesouro Direto', 0.1050)">Investir no Tesouro</button>
+                        <button class="btn btn-primary"
+                            onclick="mostrarProjecao('tesouro', document.getElementById('tesouroAmount').value, 'Tesouro Direto', 0.1050)">Investir
+                            no Tesouro</button>
                     </div>
                 </div>
 
+                <!-- FUNDOS -->
                 <div class="content-section" id="fundos">
                     <div class="investment-card">
                         <div class="card-title"><i class="fa-solid fa-briefcase"></i> Fundos de Investimento</div>
                         <div class="info-grid">
-                            <div class="info-box"><div class="info-label">Rentabilidade Média</div><div class="info-value">15,20% a.a.</div></div>
-                            <div class="info-box"><div class="info-label">Taxa Admin.</div><div class="info-value">0,50% a.a.</div></div>
+                            <div class="info-box">
+                                <div class="info-label">Rentabilidade Média</div>
+                                <div class="info-value">15,20% a.a.</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">Taxa Admin.</div>
+                                <div class="info-value">0,50% a.a.</div>
+                            </div>
                         </div>
                         <div class="ticker-list">
-                            <div class="ticker-item"><div class="ticker-name">Fundo Multimercado</div><div class="ticker-price">+12,8%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Fundo Ações</div><div class="ticker-price">+18,5%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Fundo Renda Fixa</div><div class="ticker-price">+9,2%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Fundo Cambial</div><div class="ticker-price">+5,6%</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Fundo Multimercado</div>
+                                <div class="ticker-price">+12,8%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Fundo Ações</div>
+                                <div class="ticker-price">+18,5%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Fundo Renda Fixa</div>
+                                <div class="ticker-price">+9,2%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Fundo Cambial</div>
+                                <div class="ticker-price">+5,6%</div>
+                            </div>
                         </div>
                         <div class="input-group" style="margin-top: 16px;">
                             <label class="input-label">Valor a aplicar</label>
-                            <input type="number" class="input-field" placeholder="R$ 0,00" id="fundosAmount" min="100" step="0.01">
+                            <input type="number" class="input-field" placeholder="R$ 0,00" id="fundosAmount" min="100"
+                                step="0.01">
                         </div>
-                        <button class="btn btn-primary" onclick="mostrarProjecao('fundos', document.getElementById('fundosAmount').value, 'Fundos', 0.1520)">Aplicar em Fundos</button>
+                        <button class="btn btn-primary"
+                            onclick="mostrarProjecao('fundos', document.getElementById('fundosAmount').value, 'Fundos', 0.1520)">Aplicar
+                            em Fundos</button>
                     </div>
                 </div>
 
+                <!-- OFERTAS -->
                 <div class="content-section" id="ofertas">
                     <div class="investment-card">
                         <div class="card-title"><i class="fa-solid fa-gift"></i> Ofertas Públicas</div>
                         <p class="card-description">Invista em IPOs e ofertas exclusivas no mercado de capitais.</p>
                         <div class="ticker-list">
-                            <div class="ticker-item"><div class="ticker-name">IPO Tech Empresa A</div><div style="color: #4caf50; font-weight: 600;">Abertura em 15/06</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Follow-on Tech Corp</div><div style="color: #ff9800; font-weight: 600;">Inscrição Aberta</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Debênture Empresa B</div><div style="color: #4caf50; font-weight: 600;">R$ 1.500,00</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">IPO Tech Empresa A</div>
+                                <div style="color: #4caf50; font-weight: 600;">Abertura em 15/06</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Follow-on Tech Corp</div>
+                                <div style="color: #ff9800; font-weight: 600;">Inscrição Aberta</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Debênture Empresa B</div>
+                                <div style="color: #4caf50; font-weight: 600;">R$ 1.500,00</div>
+                            </div>
                         </div>
                         <div class="info-box warning-border" style="margin-top: 16px;">
                             <div class="info-label">Oportunidades disponíveis</div>
@@ -169,16 +306,29 @@
                     </div>
                 </div>
 
+                <!-- COE -->
                 <div class="content-section" id="coe">
                     <div class="investment-card">
-                        <div class="card-title"><i class="fa-solid fa-mobile"></i> COE - Certificado de Operações Estruturadas</div>
+                        <div class="card-title"><i class="fa-solid fa-mobile"></i> COE - Certificado de Operações
+                            Estruturadas</div>
                         <div class="info-grid">
-                            <div class="info-box"><div class="info-label">Potencial de Ganho</div><div class="info-value">+150%</div></div>
-                            <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-high">Alto</span></div>
+                            <div class="info-box">
+                                <div class="info-label">Potencial de Ganho</div>
+                                <div class="info-value">+150%</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">Risco</div><span class="risk-badge risk-high">Alto</span>
+                            </div>
                         </div>
                         <div class="ticker-list">
-                            <div class="ticker-item"><div class="ticker-name">COE Ibovespa</div><div class="ticker-price">Proteção 90%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">COE Dólar</div><div class="ticker-price">Alavancado 2x</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">COE Ibovespa</div>
+                                <div class="ticker-price">Proteção 90%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">COE Dólar</div>
+                                <div class="ticker-price">Alavancado 2x</div>
+                            </div>
                         </div>
                         <div class="info-box standard-border" style="margin-top: 16px;">
                             <div class="info-label">Prazo mínimo</div>
@@ -187,40 +337,76 @@
                     </div>
                 </div>
 
+                <!-- OPÇÕES -->
                 <div class="content-section" id="opcoes">
                     <div class="investment-card">
                         <div class="card-title"><i class="fa-solid fa-clipboard"></i> Estratégia com Opções</div>
-                        <p class="card-description">Estratégias avançadas de proteção de carteira (Hedge) e alavancagem.</p>
+                        <p class="card-description">Estratégias avançadas de proteção de carteira (Hedge) e alavancagem.
+                        </p>
                         <div class="info-grid">
-                            <div class="info-box"><div class="info-label">Nível Mínimo</div><div class="info-value">Avançado</div></div>
-                            <div class="info-box"><div class="info-label">Risco</div><span class="risk-badge risk-high">Muito Alto</span></div>
+                            <div class="info-box">
+                                <div class="info-label">Nível Mínimo</div>
+                                <div class="info-value">Avançado</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">Risco</div><span class="risk-badge risk-high">Muito Alto</span>
+                            </div>
                         </div>
                         <div class="ticker-list" style="margin-top: 16px;">
-                            <div class="ticker-item"><div class="ticker-name">Call PETR4</div><div class="ticker-price">R$ 2,50</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Put VALE3</div><div class="ticker-price">R$ 1,85</div></div>
-                            <div class="ticker-item"><div class="ticker-name">Butterfly BBAS3</div><div class="ticker-price">R$ 3,20</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Call PETR4</div>
+                                <div class="ticker-price">R$ 2,50</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Put VALE3</div>
+                                <div class="ticker-price">R$ 1,85</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">Butterfly BBAS3</div>
+                                <div class="ticker-price">R$ 3,20</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- PREVIDÊNCIA -->
                 <div class="content-section" id="previdencia">
                     <div class="investment-card">
                         <div class="card-title"><i class="fa-solid fa-shield-halved"></i> Previdência Privada</div>
-                        <p class="card-description">Planeje sua aposentadoria ou projetos de longo prazo com vantagens fiscais.</p>
+                        <p class="card-description">Planeje sua aposentadoria ou projetos de longo prazo com vantagens
+                            fiscais.</p>
                         <div class="info-grid">
-                            <div class="info-box"><div class="info-label">Taxa Admin.</div><div class="info-value">0,75%</div></div>
-                            <div class="info-box"><div class="info-label">Rentabilidade</div><div class="info-value">11,50% a.a.</div></div>
+                            <div class="info-box">
+                                <div class="info-label">Taxa Admin.</div>
+                                <div class="info-value">0,75%</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">Rentabilidade</div>
+                                <div class="info-value">11,50% a.a.</div>
+                            </div>
                         </div>
                         <div class="ticker-list">
-                            <div class="ticker-item"><div class="ticker-name">PGBL - Plano A (Ações)</div><div class="ticker-price">+18,2%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">VGBL - Plano B (Misto)</div><div class="ticker-price">+12,5%</div></div>
-                            <div class="ticker-item"><div class="ticker-name">VGBL - Plano C (RF)</div><div class="ticker-price">+8,9%</div></div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">PGBL - Plano A (Ações)</div>
+                                <div class="ticker-price">+18,2%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">VGBL - Plano B (Misto)</div>
+                                <div class="ticker-price">+12,5%</div>
+                            </div>
+                            <div class="ticker-item">
+                                <div class="ticker-name">VGBL - Plano C (RF)</div>
+                                <div class="ticker-price">+8,9%</div>
+                            </div>
                         </div>
                         <div class="input-group" style="margin-top: 16px;">
                             <label class="input-label">Contribuição mensal</label>
-                            <input type="number" class="input-field" placeholder="R$ 0,00" id="previdenciaAmount" min="100" step="0.01">
+                            <input type="number" class="input-field" placeholder="R$ 0,00" id="previdenciaAmount"
+                                min="100" step="0.01">
                         </div>
-                        <button class="btn btn-primary" onclick="mostrarProjecao('previdencia', document.getElementById('previdenciaAmount').value, 'Previdência Privada', 0.1150)">Contratar Plano</button>
+                        <button class="btn btn-primary"
+                            onclick="mostrarProjecao('previdencia', document.getElementById('previdenciaAmount').value, 'Previdência Privada', 0.1150)">Contratar
+                            Plano</button>
                     </div>
                 </div>
 
@@ -228,6 +414,7 @@
         </div>
     </div>
 
+    <!-- Modal Projeção -->
     <div id="modalProjecao" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -250,8 +437,56 @@
             </div>
             <div class="modal-actions">
                 <button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
-                <button class="btn btn-primary" id="btnConfirmarInvest" onclick="confirmarInvestimento()">Confirmar Investimento</button>
+                <button class="btn btn-primary" onclick="confirmarInvestimento()">Confirmar Investimento</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal: Dinheiro guardado com sucesso -->
+    <div class="sucesso-modal" id="modal-porquinho-guardar">
+        <div class="sucesso-conteudo">
+            <div class="sucesso-icone"><i class="fa-solid fa-piggy-bank"></i></div>
+            <div class="sucesso-titulo">Dinheiro guardado!</div>
+            <p class="sucesso-descricao">Seu dinheiro foi guardado com sucesso no Meu Porquinho</p>
+            <div class="sucesso-detalhes">
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Valor guardado:</span>
+                    <span class="detalhe-valor" id="modal-guardar-valor">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Novo saldo:</span>
+                    <span class="detalhe-valor" id="modal-guardar-saldo">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Protocolo:</span>
+                    <span class="detalhe-valor" id="modal-guardar-protocolo">-</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="fecharModalGuardar()">Voltar</button>
+        </div>
+    </div>
+
+    <!-- Modal: Valor resgatado com sucesso -->
+    <div class="sucesso-modal" id="modal-porquinho-resgatar">
+        <div class="sucesso-conteudo">
+            <div class="sucesso-icone" style="color: #1A7A3C;"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="sucesso-titulo">Resgate realizado!</div>
+            <p class="sucesso-descricao">O valor foi transferido para sua conta corrente</p>
+            <div class="sucesso-detalhes">
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Valor resgatado:</span>
+                    <span class="detalhe-valor" id="modal-resgatar-valor">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Saldo restante:</span>
+                    <span class="detalhe-valor" id="modal-resgatar-saldo">-</span>
+                </div>
+                <div class="detalhe-linha">
+                    <span class="detalhe-label">Protocolo:</span>
+                    <span class="detalhe-valor" id="modal-resgatar-protocolo">-</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="fecharModalResgatar()">Voltar</button>
         </div>
     </div>
 
@@ -259,4 +494,5 @@
 
     <script src="js/investimento.js"></script>
 </body>
+
 </html>
