@@ -2444,12 +2444,7 @@ input:checked+.slider:before {
 
 /* ============================================================INVESTIMENTOS ====================================================== */
 /* --- ADAPTAÇÃO DO CONTAINER COM AS SUAS VARIÁVEIS --- */
-body {
-    background: var(--fundo);
-    color: var(--texto);
-    overflow: hidden;
-    height: 100vh;
-}
+
 
 .container-principal {
     display: flex;
@@ -2520,7 +2515,7 @@ body {
 }
 
 .tab-btn:hover {
-    background: #eebb;
+    background: rgba(231, 231, 231, 0.733);
     opacity: 0.9;
 }
 
