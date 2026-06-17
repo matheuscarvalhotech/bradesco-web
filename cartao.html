@@ -40,134 +40,136 @@
 
         <!--Conteúdo Principal-->
         <main class="main-content">
+            <!--Botão de voltar-->
+            <button class="btn-voltar" onclick="history.back()">
+                <i class="fa-solid fa-arrow-left"></i> Voltar
+            </button>
+            <!--Saudação-->
+            <div class="saudacao">
+                <h1>Cartões <i class="fa-solid fa-credit-card"></i></h1>
+                <p id="data-hoje"></p>
+            </div>
 
-                <!--Saudação-->
-                <div class="saudacao">
-                    <h1>Cartões <i class="fa-solid fa-credit-card"></i></h1>
-                    <p id="data-hoje"></p>
-                </div>
+            <!-- Seleção Superior de Abas (Físicos vs Virtual) -->
+            <div class="cartoes-abas">
+                <button id="aba-visa" class="aba-btn ativa" onclick="mudarCartaoVisual('visa')">
+                    <i class="fa-brands fa-cc-visa fa-lg"></i> Visa Prime
+                </button>
+                <button id="aba-master" class="aba-btn" onclick="mudarCartaoVisual('master')">
+                    <i class="fa-brands fa-cc-mastercard fa-lg"></i> Mastercard Black
+                </button>
+                <button id="aba-virtual" class="aba-btn aba-btn--virtual" onclick="mudarCartaoVisual('virtual')">
+                    <i class="fa-solid fa-bolt"></i> Cartão Virtual Online
+                </button>
+            </div>
 
-                <!-- Seleção Superior de Abas (Físicos vs Virtual) -->
-                <div class="cartoes-abas">
-                    <button id="aba-visa" class="aba-btn ativa" onclick="mudarCartaoVisual('visa')">
-                        <i class="fa-brands fa-cc-visa fa-lg"></i> Visa Prime
-                    </button>
-                    <button id="aba-master" class="aba-btn" onclick="mudarCartaoVisual('master')">
-                        <i class="fa-brands fa-cc-mastercard fa-lg"></i> Mastercard Black
-                    </button>
-                    <button id="aba-virtual" class="aba-btn aba-btn--virtual" onclick="mudarCartaoVisual('virtual')">
-                        <i class="fa-solid fa-bolt"></i> Cartão Virtual Online
-                    </button>
-                </div>
+            <div class="cartoes-grid">
 
-                <div class="cartoes-grid">
+                <!-- Painel Esquerdo: Layout Físico, Bloqueio e Limite -->
+                <div class="card card--sem-margem">
 
-                    <!-- Painel Esquerdo: Layout Físico, Bloqueio e Limite -->
-                    <div class="card card--sem-margem">
-
-                        <!-- Desenho Dinâmico do Cartão -->
-                        <div id="design-cartao-container" class="cartao-design-base cartao-visa-design">
-                            <div class="cartao-topo-linha">
-                                <span class="cartao-nome-banco" id="txt-marca-banco">BRADESCO</span>
-                                <i id="icone-bandeira" class="fa-brands fa-cc-visa fa-2x"></i>
-                            </div>
-                            <div id="txt-num-cartao" class="cartao-numero-linha">
-                                **** **** **** 4591
-                            </div>
-                            <div class="cartao-rodape-linha">
-                                <span>MATHEUS CARVALHO</span>
-                                <span id="txt-validade-cartao">VAL: 12/31</span>
-                            </div>
-                            <div class="cartao-bloqueado-overlay">
-                                <i class="fa-solid fa-lock cartao-bloqueado-icone"></i> CARTÃO BLOQUEADO
-                            </div>
+                    <!-- Desenho Dinâmico do Cartão -->
+                    <div id="design-cartao-container" class="cartao-design-base cartao-visa-design">
+                        <div class="cartao-topo-linha">
+                            <span class="cartao-nome-banco" id="txt-marca-banco">BRADESCO</span>
+                            <i id="icone-bandeira" class="fa-brands fa-cc-visa fa-2x"></i>
                         </div>
-
-                        <!-- Trava de Segurança -->
-                        <div class="cartao-controles">
-                            <div class="cartao-controles-label">
-                                <i class="fa-solid fa-shield-halved icone-shield"></i>
-                                <span class="cartao-controles-texto">Bloqueio temporário</span>
-                            </div>
-                            <label class="switch">
-                                <input type="checkbox" id="switch-bloqueio"
-                                    onchange="toggleBloqueioCartao(this.checked)">
-                                <span class="slider"></span>
-                            </label>
+                        <div id="txt-num-cartao" class="cartao-numero-linha">
+                            **** **** **** 4591
                         </div>
-
-                        <!-- Barra de limites operacionais -->
-                        <div class="limite-container">
-                            <div class="limite-valores">
-                                <span>Limite disponível:</span>
-                                <strong id="val-limite-disp" class="limite-disponivel">R$ 3.500,00</strong>
-                            </div>
-                            <div class="limite-valores limite-valores--secundario">
-                                <span>Limite total:</span>
-                                <span id="val-limite-total">R$ 5.000,00</span>
-                            </div>
-                            <button id="btn-ajuste-limite-trigger" class="btn-limite" onclick="abrirModalLimite()">
-                                <i class="fa-solid fa-sliders"></i> Ajustar Limite
-                            </button>
+                        <div class="cartao-rodape-linha">
+                            <span>MATHEUS CARVALHO</span>
+                            <span id="txt-validade-cartao">VAL: 12/31</span>
+                        </div>
+                        <div class="cartao-bloqueado-overlay">
+                            <i class="fa-solid fa-lock cartao-bloqueado-icone"></i> CARTÃO BLOQUEADO
                         </div>
                     </div>
 
-                    <!-- Painel Direito: Dados de Fatura & Ações Rápidas -->
-                    <div class="card card--sem-margem">
-                        <div class="card-cabecalho">
-                            <h2 id="titulo-painel-direito">Fatura Atual</h2>
+                    <!-- Trava de Segurança -->
+                    <div class="cartao-controles">
+                        <div class="cartao-controles-label">
+                            <i class="fa-solid fa-shield-halved icone-shield"></i>
+                            <span class="cartao-controles-texto">Bloqueio temporário</span>
                         </div>
-                        <div class="fatura-corpo" id="corpo-painel-direito">
-                            <span class="fatura-label">Total a pagar:</span>
-                            <div id="txt-fatura-valor" class="fatura-valor">
-                                R$ 1.500,00
-                            </div>
-                            <p class="fatura-vencimento">
-                                <i class="fa-solid fa-calendar"></i> Vence em 10/06/2026
-                            </p>
+                        <label class="switch">
+                            <input type="checkbox" id="switch-bloqueio" onchange="toggleBloqueioCartao(this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Barra de limites operacionais -->
+                    <div class="limite-container">
+                        <div class="limite-valores">
+                            <span>Limite disponível:</span>
+                            <strong id="val-limite-disp" class="limite-disponivel">R$ 3.500,00</strong>
                         </div>
-                        <button id="btn-acao-fatura" class="btn-limite btn-limite--outline"
-                            onclick="executarAcaoPainelDireito()">
-                            Copiar Código de Barras
+                        <div class="limite-valores limite-valores--secundario">
+                            <span>Limite total:</span>
+                            <span id="val-limite-total">R$ 5.000,00</span>
+                        </div>
+                        <button id="btn-ajuste-limite-trigger" class="btn-limite" onclick="abrirModalLimite()">
+                            <i class="fa-solid fa-sliders"></i> Ajustar Limite
                         </button>
                     </div>
                 </div>
 
-                <!-- Histórico de Gastos do Cartão -->
-                <div class="card" id="card-historico-fatura">
+                <!-- Painel Direito: Dados de Fatura & Ações Rápidas -->
+                <div class="card card--sem-margem">
                     <div class="card-cabecalho">
-                        <h2>Lançamentos do Cartão</h2>
-                        <span class="historico-status">Fatura Aberta</span>
+                        <h2 id="titulo-painel-direito">Fatura Atual</h2>
                     </div>
-                    <br>
-                    <ul class="transacoes" id="lista-gastos-cartao">
-                        <!-- Gerado dinamicamente via JS -->
-                    </ul>
-                </div>
-
-                <!-- Modal para ajuste de limites interativo -->
-                <div id="modal-ajuste" class="modal-overlay">
-                    <div class="modal-card">
-                        <h3>Ajustar Limite Operacional</h3>
-                        <p class="modal-descricao">Define o teto máximo de gastos aprovados:</p>
-
-                        <input type="range" id="input-range-limite" min="1000" max="10000" step="500"
-                            class="modal-range" oninput="atualizarLabelModal(this.value)">
-
-                        <div class="modal-valor-display">
-                            R$ <span id="label-modal-valor">5.000</span>,00
+                    <div class="fatura-corpo" id="corpo-painel-direito">
+                        <span class="fatura-label">Total a pagar:</span>
+                        <div id="txt-fatura-valor" class="fatura-valor">
+                            R$ 1.500,00
                         </div>
-
-                        <div class="modal-botoes">
-                            <button class="btn-secundario" onclick="fecharModalLimite()">Cancelar</button>
-                            <button class="btn-limite btn-limite--auto" onclick="salvarNovoLimite()">Confirmar
-                                Ajuste</button>
-                        </div>
+                        <p class="fatura-vencimento">
+                            <i class="fa-solid fa-calendar"></i> Vence em 10/06/2026
+                        </p>
                     </div>
+                    <button id="btn-acao-fatura" class="btn-limite btn-limite--outline"
+                        onclick="executarAcaoPainelDireito()">
+                        Copiar Código de Barras
+                    </button>
                 </div>
             </div>
 
-        </main>
+            <!-- Histórico de Gastos do Cartão -->
+            <div class="card" id="card-historico-fatura">
+                <div class="card-cabecalho">
+                    <h2>Lançamentos do Cartão</h2>
+                    <span class="historico-status">Fatura Aberta</span>
+                </div>
+                <br>
+                <ul class="transacoes" id="lista-gastos-cartao">
+                    <!-- Gerado dinamicamente via JS -->
+                </ul>
+            </div>
+
+            <!-- Modal para ajuste de limites interativo -->
+            <div id="modal-ajuste" class="modal-overlay">
+                <div class="modal-card">
+                    <h3>Ajustar Limite Operacional</h3>
+                    <p class="modal-descricao">Define o teto máximo de gastos aprovados:</p>
+
+                    <input type="range" id="input-range-limite" min="1000" max="10000" step="500" class="modal-range"
+                        oninput="atualizarLabelModal(this.value)">
+
+                    <div class="modal-valor-display">
+                        R$ <span id="label-modal-valor">5.000</span>,00
+                    </div>
+
+                    <div class="modal-botoes">
+                        <button class="btn-secundario" onclick="fecharModalLimite()">Cancelar</button>
+                        <button class="btn-limite btn-limite--auto" onclick="salvarNovoLimite()">Confirmar
+                            Ajuste</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    </main>
     </div>
     <script src="./js/cartao.js"></script>
 </body>

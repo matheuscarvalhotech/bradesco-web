@@ -227,6 +227,12 @@ body {
     text-decoration: none;
 }
 
+.card-dashboard a {
+    font-size: 16px;
+    color: var(--vermelho);
+    text-decoration: none;
+}
+
 /* Transações */
 .transacao {
     display: flex;
