@@ -83,7 +83,7 @@ cd bradesco-web
 | <!-- Nome do integrante 2 --> | <!-- @usuario --> |
 | <!-- Nome do integrante 3 --> | <!-- @usuario --> |
 | <!-- Nome do integrante 4 --> | <!-- @usuario --> |
-| <!-- Nome do integrante 4 --> | <!-- @usuario --> |
+| <!-- Nome do integrante 5 --> | <!-- @usuario --> |
 
 ---
 

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradesco | Login</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-wrapper">
+
+        <!-- Lado esquerdo -->
+        <div class="login-esquerda">
+            <div class="login-esquerda-inner">
+
+                <img src="assets/logo_bradesco.png" alt="Bradesco" class="login-logo-esq">
+
+                <h1 class="login-headline">Banco na palma<br>da sua mão.</h1>
+
+                <div class="login-recursos">
+                    <div class="login-recurso-item">
+                        <div class="login-recurso-icone">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div>
+                            <strong>PIX Instantâneo</strong>
+                            <p>Transfira para qualquer banco em segundos, a qualquer hora.</p>
+                        </div>
+                    </div>
+                    <div class="login-recurso-item">
+                        <div class="login-recurso-icone">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <strong>Investimentos Integrados</strong>
+                            <p>Renda fixa, tesouro direto, ações e muito mais em um só lugar.</p>
+                        </div>
+                    </div>
+                    <div class="login-recurso-item">
+                        <div class="login-recurso-icone">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <strong>Segurança Total</strong>
+                            <p>Autenticação em dois fatores e monitoramento 24h da sua conta.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Lado direito -->
+        <div class="login-direita">
+            <div class="login-card">
+
+                <div class="login-avatar">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+
+                <h2 class="login-nome">Daniel Almeida</h2>
+                <p class="login-boas-vindas">Bem-vindo de volta!</p>
+
+                <div class="login-conta-dados">
+                    <div class="login-dado-item">
+                        <span class="login-dado-label">Agência</span>
+                        <span class="login-dado-valor">1234-5</span>
+                    </div>
+                    <div class="login-dado-separador"></div>
+                    <div class="login-dado-item">
+                        <span class="login-dado-label">Conta Corrente</span>
+                        <span class="login-dado-valor">98765-4</span>
+                    </div>
+                </div>
+
+                <p class="login-label">Digite sua senha de 6 dígitos</p>
+
+                <div class="login-senha-grid" id="senha-grid">
+                    <input type="password" class="login-senha-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="password" class="login-senha-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="password" class="login-senha-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="password" class="login-senha-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="password" class="login-senha-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="password" class="login-senha-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                </div>
+
+                <span class="login-erro" id="login-erro"></span>
+
+                <button class="btn btn-primario login-btn-entrar" id="btn-entrar" onclick="tentarLogin()" disabled>
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Acessar minha conta
+                </button>
+
+                <div class="login-links">
+                    <a href="#" class="login-link">
+                        <i class="fa-solid fa-key"></i> Esqueci minha senha
+                    </a>
+                    <a href="#" class="login-link">
+                        <i class="fa-solid fa-mobile-screen"></i> Autenticar pelo app
+                    </a>
+                </div>
+
+                <p class="login-rodape">
+                    <i class="fa-solid fa-lock"></i>
+                    Ambiente seguro — Bradesco © 2026
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Splash -->
+    <div class="splash-overlay" id="splash">
+        <div class="splash-conteudo">
+            <img src="assets/logo_bradesco.png" alt="Bradesco" class="splash-logo">
+            <div class="splash-spinner">
+                <div class="splash-spinner-barra"></div>
+                <div class="splash-spinner-barra"></div>
+                <div class="splash-spinner-barra"></div>
+                <div class="splash-spinner-barra"></div>
+            </div>
+            <p class="splash-texto" id="splash-texto">Verificando credenciais...</p>
+        </div>
+    </div>
+
+    <script src="./js/login.js"></script>
+
+</body>
+</html>

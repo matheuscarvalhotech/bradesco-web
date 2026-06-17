@@ -1243,6 +1243,15 @@ body {
     text-decoration: underline;
 }
 
+.tipo-btn.selecionado strong,
+.tipo-btn.selecionado span,
+.tipo-btn.selecionado i,
+.operadora-btn.ativo strong,
+.operadora-btn.ativo span,
+.operadora-btn.ativo i {
+    color: var(--branco) !important;
+}
+
 /* CARTÕES DE DEBITO E CREDITO */
 .secao-cartoes-container {
     margin-top: 30px;
@@ -2917,4 +2926,401 @@ to {
 
 .upload-area:hover i {
     color: var(--vermelho);
+}
+
+/* =====================
+   LOGIN
+   ===================== */
+
+.login-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-wrapper {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+}
+/* Esquerda */
+.login-esquerda {
+    flex: 0.8;
+    background: linear-gradient(145deg, #8B0000 0%, #CC0000 60%, #E53935 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 56px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-esquerda::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+}
+
+.login-esquerda::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+    bottom: -80px;
+    left: -60px;
+}
+
+.login-esquerda-inner {
+    position: relative;
+    z-index: 1;
+    color: var(--branco);
+    max-width: 560px;
+    width: 100%;
+}
+
+.login-logo-esq {
+    height: 44px;
+    margin-bottom: 48px;
+    filter: brightness(0) invert(1);
+}
+
+.login-headline {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 48px;
+    color: var(--branco);
+}
+
+.login-recursos {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.login-recurso-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.login-recurso-icone {
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    backdrop-filter: blur(4px);
+}
+
+.login-recurso-item strong {
+    font-size: 15px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.login-recurso-item p {
+    font-size: 13px;
+    opacity: 0.8;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Direita */
+.login-direita {
+    flex: 1.2;
+    background-color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-avatar {
+    font-size: 100px;
+    color: #D5D5D5;
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+.login-nome {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--texto);
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.login-boas-vindas {
+    font-size: 14px;
+    color: var(--texto-claro);
+    margin-bottom: 20px;
+}
+
+.login-conta-dados {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--fundo);
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-bottom: 12px;
+    width: 100%;
+    justify-content: center;
+}
+.login-dado-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.login-dado-label {
+    font-size: 11px;
+    color: var(--texto-claro);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.login-dado-valor {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--texto);
+}
+
+.login-dado-separador {
+    width: 1px;
+    height: 32px;
+    background-color: #E0E0E0;
+}
+
+.login-trocar-usuario {
+    background: none;
+    border: none;
+    color: var(--vermelho);
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 28px;
+    transition: opacity 0.2s;
+    padding: 0;
+}
+
+.login-trocar-usuario:hover {
+    opacity: 0.7;
+}
+
+.login-label {
+    font-size: 13px;
+    color: var(--texto-claro);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.login-senha-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.login-senha-input {
+    width: 70px;
+    height: 72px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    border: 2px solid #E0E0E0;
+    border-radius: 14px;
+    outline: none;
+    color: var(--texto);
+    background-color: var(--fundo);
+    transition: all 0.2s;
+}
+
+.login-senha-input:focus {
+    border-color: var(--vermelho);
+    background-color: var(--branco);
+    box-shadow: 0 0 0 3px rgba(204,0,0,0.08);
+}
+
+.login-erro {
+    font-size: 12px;
+    color: var(--vermelho);
+    text-align: center;
+    min-height: 20px;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+.login-btn-entrar {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 4px;
+    border-radius: 12px;
+}
+
+.login-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.login-link {
+    font-size: 13px;
+    color: var(--vermelho);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+}
+
+.login-link:hover {
+    opacity: 0.7;
+}
+
+.login-rodape {
+    font-size: 11px;
+    color: #BBBBBB;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-8px); }
+    40%       { transform: translateX(8px); }
+    60%       { transform: translateX(-5px); }
+    80%       { transform: translateX(5px); }
+}
+
+.login-shake {
+    animation: shake 0.5s ease;
+}
+
+/* =====================
+   SPLASH
+   ===================== */
+ 
+.splash-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+ 
+.splash-overlay.ativo {
+    opacity: 1;
+    pointer-events: all;
+}
+ 
+.splash-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+ 
+.splash-logo {
+    height: 48px;
+}
+ 
+.splash-spinner {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+    height: 36px;
+}
+ 
+.splash-spinner-barra {
+    width: 6px;
+    background-color: var(--vermelho);
+    border-radius: 4px;
+    animation: splash-bounce 0.8s ease-in-out infinite;
+}
+ 
+.splash-spinner-barra:nth-child(1) { animation-delay: 0s;    height: 16px; }
+.splash-spinner-barra:nth-child(2) { animation-delay: 0.15s; height: 24px; }
+.splash-spinner-barra:nth-child(3) { animation-delay: 0.3s;  height: 36px; }
+.splash-spinner-barra:nth-child(4) { animation-delay: 0.45s; height: 20px; }
+ 
+@keyframes splash-bounce {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.4; }
+    50%       { transform: scaleY(1);   opacity: 1; }
+}
+ 
+.splash-texto {
+    font-size: 14px;
+    color: var(--texto-claro);
+    font-weight: 500;
+}
+ 
+/* =====================
+   BOTÃO VOLTAR
+   ===================== */
+ 
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--texto-claro);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 0;
+    margin-bottom: 16px;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+ 
+.btn-voltar:hover {
+    color: var(--vermelho);
+}
+ 
+.btn-voltar i {
+    font-size: 13px;
 }

@@ -127,36 +127,37 @@ function formatarValorBilhete(input) {
 }
 
 function atualizarResumoBilhete() {
-    const numero = document.getElementById('numero-bilhete');
+    const inputManual = document.getElementById('numero-bilhete');
     const container = document.getElementById('resumo-bilhete-container');
     if (!container) return;
 
-    const numeros = numero.value.replace(/\D/g, '');
-    const numeroValido = numeros.length === 16;
-    const temAlgo = numeroValido || tipoBilheteSelecionado || valorBilheteSelecionado;
+    const numeroManual = inputManual ? inputManual.value.replace(/\D/g, '') : '';
+    const numeroFinal = numeroBilheteSelecionado || (numeroManual.length === 16 ? inputManual.value : null);
+
+    const temAlgo = numeroFinal || tipoBilheteSelecionado || valorBilheteSelecionado;
     container.style.display = temAlgo ? 'block' : 'none';
 
-    document.getElementById('resumo-bilhete-numero').textContent =
-        numeroValido ? numero.value : '-';
-    document.getElementById('resumo-bilhete-tipo').textContent =
-        tipoBilheteSelecionado || '-';
-    document.getElementById('resumo-bilhete-valor').textContent =
-        valorBilheteSelecionado
-            ? 'R$ ' + valorBilheteSelecionado.toFixed(2).replace('.', ',')
-            : '-';
+    document.getElementById('resumo-bilhete-numero').textContent = numeroFinal || '-';
+    document.getElementById('resumo-bilhete-tipo').textContent = tipoBilheteSelecionado || '-';
+    document.getElementById('resumo-bilhete-valor').textContent = valorBilheteSelecionado
+        ? 'R$ ' + valorBilheteSelecionado.toFixed(2).replace('.', ',') : '-';
 }
 
 function verificarFormularioBilhete() {
-    const numero = document.getElementById('numero-bilhete');
+    const inputManual = document.getElementById('numero-bilhete');
     const btn = document.getElementById('btn-confirmar-bilhete');
     if (!btn) return;
-    const numeroValido = numero.value.replace(/\D/g, '').length === 16;
-    btn.disabled = !(numeroValido && tipoBilheteSelecionado && valorBilheteSelecionado);
+
+    const numeroManual = inputManual ? inputManual.value.replace(/\D/g, '').length === 16 : false;
+    const temNumero = numeroBilheteSelecionado || numeroManual;
+    btn.disabled = !(temNumero && tipoBilheteSelecionado && valorBilheteSelecionado);
 }
 
 function confirmarBilhete() {
-    const numero = document.getElementById('numero-bilhete').value;
+    const inputManual = document.getElementById('numero-bilhete');
+    const numero = numeroBilheteSelecionado || (inputManual ? inputManual.value : '-');
     const protocolo = 'BRD' + Date.now().toString().slice(-8);
+
     document.getElementById('modal-bilhete-numero').textContent = numero;
     document.getElementById('modal-bilhete-tipo').textContent = tipoBilheteSelecionado;
     document.getElementById('modal-bilhete-valor').textContent =
@@ -175,11 +176,14 @@ function limparFormularioBilhete() {
     const custom = document.getElementById('valor-custom-bilhete');
     if (numero) numero.value = '';
     if (custom) custom.value = '';
+    document.querySelectorAll('.cartao-salvo-btn').forEach(b => b.classList.remove('selecionado'));
     document.querySelectorAll('.operadora-btn').forEach(b => b.classList.remove('ativo'));
+    numeroBilheteSelecionado = null;
     tipoBilheteSelecionado = null;
     valorBilheteSelecionado = null;
     document.getElementById('grupo-valores-bilhete').style.display = 'none';
     document.getElementById('grupo-custom-bilhete').style.display = 'none';
+    document.getElementById('novo-cartao-container').style.display = 'none';
     document.getElementById('resumo-bilhete-container').style.display = 'none';
     document.getElementById('btn-confirmar-bilhete').disabled = true;
     const erro = document.getElementById('erro-bilhete');
