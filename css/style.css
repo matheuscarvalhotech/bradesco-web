@@ -1249,9 +1249,6 @@ body {
     text-decoration: underline;
 }
 
-.tipo-btn.selecionado strong,
-.tipo-btn.selecionado span,
-.tipo-btn.selecionado i,
 .operadora-btn.ativo strong,
 .operadora-btn.ativo span,
 .operadora-btn.ativo i {
