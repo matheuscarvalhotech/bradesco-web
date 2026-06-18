@@ -14,15 +14,18 @@ O projeto simula as principais funcionalidades de um internet banking moderno, c
 
 | Página | Descrição |
 |--------|-----------|
+| 🔐 **Login** | Tela de autenticação e acesso seguro à conta |
 | 🏠 **Início** | Tela principal com saldo, atalhos rápidos e últimas transações |
 | 📊 **Dashboard** | Painel completo com gráficos de receitas x despesas e gastos por categoria |
-| ⚡ **PIX** | Simulação de transferência via PIX |
+| ⚡ **PIX** | Simulação de transferência instantânea via PIX |
 | 💸 **Transferir** | Transferência por etapas (TED, DOC, entre contas e agendada) |
 | 📄 **Extrato** | Histórico de transações com filtros por período e tipo |
-| 📱 **Recarga de Celular** | Recarga para as principais operadoras |
-| 🚌 **Bilhete Único** | Recarga SPTrans com tipos Comum, Estudante, Mensal e TOP |
+| 📈 **Investimentos** | Painel de acompanhamento e simulação de aplicações financeiras |
 | 💳 **Cartões** | Gerenciamento de cartões de crédito e débito |
 | 💰 **Criptomoedas** | Painel de acompanhamento e simulação de criptoativos |
+| 📱 **Recarga de Celular** | Recarga para as principais operadoras |
+| 🚌 **Bilhete Único** | Recarga SPTrans com tipos Comum, Estudante, Mensal e TOP |
+| 🧾 **Pagar** | Tela para pagamento de contas, boletos e convênios |
 
 ---
 
@@ -42,19 +45,36 @@ O projeto simula as principais funcionalidades de um internet banking moderno, c
 
 ```
 bradesco-web/
-├── index.html          # Tela inicial
-├── dashboard.html      # Dashboard completo
-├── pix.html            # Transferência PIX
-├── transferir.html     # Transferência bancária por etapas
-├── extract.html        # Extrato com filtros
-├── recharge.html       # Recarga de celular
-├── bilhete.html        # Bilhete Único SPTrans
-├── cartao.html         # Gerenciamento de cartões
-├── cripto.html         # Criptomoedas
-├── style.css           # Estilos globais
-├── script.js           # JavaScript principal
-└── assets/
-    └── logo_bradesco.png
+├── assets/
+│   └── logo_bradesco.png
+├── css/
+│   └── style.css
+├── js/
+│   ├── bilheteUnico.js
+│   ├── cartao.js
+│   ├── criptomoeda.js
+│   ├── dashboard.js
+│   ├── extract.js
+│   ├── home.js
+│   ├── investimento.js
+│   ├── login.js
+│   ├── pagar.js
+│   ├── pix.js
+│   ├── recharge.js
+│   └── transferencia.js
+├── bilhete.html         # Bilhete Único SPTrans
+├── cartao.html          # Gerenciamento de cartões
+├── cripto.html          # Criptomoedas
+├── dashboard.html       # Dashboard completo
+├── extract.html         # Extrato com filtros
+├── index.html           # Tela inicial
+├── investimento.html    # Tela de investimentos
+├── login.html           # Tela de login
+├── pagar.html           # Tela de pagamentos
+├── pix.html             # Transferência PIX
+├── README.md            # Documentação do projeto
+├── recharge.html        # Recarga de celular
+└── transferir.html      # Transferência bancária por etapas
 ```
 
 ---
@@ -71,7 +91,7 @@ git clone https://github.com/matheuscarvalhotech/bradesco-web.git
 cd bradesco-web
 ```
 
-3. Abra o `index.html` no navegador ou use a extensão **Live Server** no VS Code.
+3. Abra o `login.html` no navegador ou use a extensão **Live Server** no VS Code.
 
 ---
 
@@ -79,11 +99,11 @@ cd bradesco-web
 
 | Nome | GitHub |
 |------|--------|
-| <!-- Nome do integrante 1 --> | <!-- @usuario --> |
-| <!-- Nome do integrante 2 --> | <!-- @usuario --> |
-| <!-- Nome do integrante 3 --> | <!-- @usuario --> |
-| <!-- Nome do integrante 4 --> | <!-- @usuario --> |
-| <!-- Nome do integrante 5 --> | <!-- @usuario --> |
+| <!-- Matheus Carvalho --> | <!-- @matheuscarvalhotech --> |
+| <!-- João H. Ruyz --> | <!-- @JoaoRuyz --> |
+| <!-- Gustavo B. Silva --> | <!-- @GustavoBrs --> |
+| <!-- Caio E. felix --> | <!-- @caioeduardopereirafelix --> |
+| <!-- Felipe G. Silva --> | <!-- @ldiaoai --> |
 
 ---
 
